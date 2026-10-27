@@ -10,7 +10,7 @@ The site is fully static (`dist/`), so there is no server to run or secure.
    - Framework preset: Astro
    - Build command: `pnpm build`
    - Build output directory: `dist`
-4. Environment variable (only if the build uses the wrong Node): `NODE_VERSION=22`.
+4. Environment variable (only if the build uses the wrong Node): `NODE_VERSION=24`.
    The repo also ships `.node-version`.
 5. Save and deploy. Pull requests get preview deployments automatically.
 

@@ -1,0 +1,59 @@
+{
+  "key": "postgres",
+  "track": "backend",
+  "order": 5,
+  "title": "PostgreSQL",
+  "summary": "Cómo funciona por dentro y cómo operarlo con criterio.",
+  "cards": [
+    {
+      "id": "acid",
+      "level": "beginner",
+      "question": "¿Qué significa ACID?",
+      "answer": "Atomicidad (todo o nada), Consistencia (se respetan las restricciones), Aislamiento (las transacciones concurrentes no se pisan) y Durabilidad (lo confirmado sobrevive a una caída)."
+    },
+    {
+      "id": "mvcc",
+      "level": "intermediate",
+      "question": "¿Qué es MVCC en PostgreSQL?",
+      "answer": "Cada UPDATE crea una nueva versión de la fila y las transacciones ven la que corresponde a su snapshot. Los lectores no bloquean a los escritores. Las versiones muertas se limpian con VACUUM."
+    },
+    {
+      "id": "explain-analyze",
+      "level": "intermediate",
+      "question": "¿Cómo diagnosticas una consulta lenta?",
+      "answer": "Con EXPLAIN (ANALYZE, BUFFERS): muestra el plan real, tiempos y filas estimadas vs reales. Una gran diferencia entre estimado y real suele indicar estadísticas desactualizadas (ANALYZE) o un índice faltante."
+    },
+    {
+      "id": "index-types",
+      "level": "intermediate",
+      "question": "¿Qué tipos de índice ofrece PostgreSQL y cuándo usar cada uno?",
+      "answer": "B-tree (por defecto: igualdad y rangos), GIN (jsonb, arrays, búsqueda de texto), GiST (geometría y rangos), BRIN (tablas enormes con datos correlacionados con el orden físico) y Hash (solo igualdad)."
+    },
+    {
+      "id": "connection-pooling",
+      "level": "advanced",
+      "question": "¿Por qué hace falta un pool de conexiones?",
+      "answer": "Cada conexión es un proceso del servidor con costo de memoria. Miles de conexiones directas degradan la base. Un pooler como PgBouncer multiplexa muchas conexiones de cliente sobre pocas reales."
+    },
+    {
+      "id": "skip-locked",
+      "level": "advanced",
+      "question": "¿Cómo implementas una cola de trabajos sobre PostgreSQL?",
+      "answer": "Con SELECT ... FOR UPDATE SKIP LOCKED: cada worker toma filas pendientes que nadie más ha bloqueado, sin esperar ni procesar el mismo trabajo dos veces. Sirve para volúmenes moderados antes de pasar a un broker dedicado."
+    }
+  ],
+  "resources": [
+    {
+      "title": "PostgreSQL: Concurrency Control (MVCC)",
+      "url": "https://www.postgresql.org/docs/current/mvcc-intro.html"
+    },
+    {
+      "title": "PostgreSQL: Using EXPLAIN",
+      "url": "https://www.postgresql.org/docs/current/using-explain.html"
+    },
+    {
+      "title": "PostgreSQL: Index Types",
+      "url": "https://www.postgresql.org/docs/current/indexes-types.html"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "key": "system-design",
+  "track": "backend",
+  "order": 7,
+  "title": "System design",
+  "summary": "Trade-offs, scale and failure modes: the core of a senior interview.",
+  "cards": [
+    {
+      "id": "vertical-vs-horizontal",
+      "level": "beginner",
+      "question": "Vertical or horizontal scaling?",
+      "answer": "Vertical: a bigger machine; simple but capped and a single point of failure. Horizontal: more instances behind a load balancer; scales further and tolerates failure, but needs stateless services or shared state."
+    },
+    {
+      "id": "caching-strategies",
+      "level": "intermediate",
+      "question": "Which caching strategies do you know and what are the risks?",
+      "answer": "Cache-aside (the app reads and fills the cache), write-through and write-behind. Risks: stale data, hard invalidation and cache stampede, when many requests recompute an expired key at once; mitigate with locks, TTL jitter or early refresh."
+    },
+    {
+      "id": "rate-limiting",
+      "level": "intermediate",
+      "question": "How would you design a rate limiter?",
+      "answer": "Common algorithms: token bucket (allows controlled bursts) and sliding window. With multiple instances the counter lives in a shared store like Redis, using atomic operations. Respond 429 with Retry-After."
+    },
+    {
+      "id": "message-queues",
+      "level": "intermediate",
+      "question": "What is a message queue for and what guarantees does it give?",
+      "answer": "It decouples producers and consumers, absorbs spikes and enables retries. Delivery is usually at-least-once, so consumers must be idempotent because a message may arrive more than once."
+    },
+    {
+      "id": "cap-theorem",
+      "level": "advanced",
+      "question": "What does the CAP theorem mean in practice?",
+      "answer": "During a network partition you must choose between consistency and availability: either reject requests to avoid stale data, or answer with possibly stale data. Without a partition you can have both; the real trade-off is also latency vs consistency (PACELC)."
+    },
+    {
+      "id": "idempotency-keys",
+      "level": "advanced",
+      "question": "How do you avoid charging twice when a client retries a payment?",
+      "answer": "With a client-supplied idempotency key: the server stores the first execution's result against that key and returns the same result on retries instead of repeating the effect."
+    },
+    {
+      "id": "url-shortener",
+      "level": "advanced",
+      "question": "How would you approach designing a URL shortener?",
+      "answer": "Clarify requirements (scale, expiry, analytics). It is read-heavy: unique short key (base62-encoded counter or hash with collision handling), key-value store, cache for hot redirects, 301 vs 302 depending on whether you want click counts, and analytics asynchronously."
+    }
+  ],
+  "resources": [
+    {
+      "title": "System Design Primer",
+      "url": "https://github.com/donnemartin/system-design-primer"
+    },
+    {
+      "title": "Amazon Builders' Library",
+      "url": "https://aws.amazon.com/builders-library/"
+    },
+    {
+      "title": "Designing Data-Intensive Applications",
+      "url": "https://dataintensive.net/"
+    }
+  ]
+}

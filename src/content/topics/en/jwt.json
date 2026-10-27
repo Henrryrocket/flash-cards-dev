@@ -1,0 +1,63 @@
+{
+  "key": "jwt",
+  "track": "backend",
+  "order": 3,
+  "title": "JWT and authentication",
+  "summary": "Signed tokens: what they guarantee, what they do not, and how to use them safely.",
+  "cards": [
+    {
+      "id": "jwt-structure",
+      "level": "beginner",
+      "question": "What is a JWT made of?",
+      "answer": "Three base64url parts separated by dots: header.payload.signature. The payload is signed but NOT encrypted: anyone can read it, so never put secrets there."
+    },
+    {
+      "id": "jwt-vs-session",
+      "level": "intermediate",
+      "question": "JWT or server-side session? What do you gain and lose?",
+      "answer": "A JWT is stateless: any instance validates it with the key, no shared store. The cost is revocation: it stays valid until it expires. Sessions revoke instantly but need a shared store."
+    },
+    {
+      "id": "jwt-storage",
+      "level": "intermediate",
+      "question": "Where should a JWT be stored in the browser?",
+      "answer": "In localStorage any XSS can read it. An HttpOnly + Secure + SameSite cookie is not readable by JavaScript but needs CSRF defense. No free option: you choose which attack to mitigate and how."
+    },
+    {
+      "id": "refresh-tokens",
+      "level": "intermediate",
+      "question": "What is a refresh token for?",
+      "answer": "It lets the access token be short-lived (minutes), limiting damage if leaked. The longer-lived refresh token is used only to obtain a new one and is rotated on each use to detect theft."
+    },
+    {
+      "id": "jwt-alg-validation",
+      "level": "advanced",
+      "question": "Which validation mistakes have caused serious JWT vulnerabilities?",
+      "answer": "Trusting the algorithm the token itself declares: alg=none with no signature, or RS256/HS256 confusion using the public key as secret. Avoid it by pinning allowed algorithms server-side and validating exp, iss and aud."
+    },
+    {
+      "id": "jwt-revocation",
+      "level": "advanced",
+      "question": "How do you revoke a JWT before it expires?",
+      "answer": "Short TTLs plus a denylist by jti, or a per-user token version checked on each request. Both reintroduce state, which is the inherent trade-off of the stateless approach."
+    }
+  ],
+  "resources": [
+    {
+      "title": "JWT.io: Introduction",
+      "url": "https://jwt.io/introduction"
+    },
+    {
+      "title": "RFC 7519: JSON Web Token",
+      "url": "https://www.rfc-editor.org/rfc/rfc7519"
+    },
+    {
+      "title": "RFC 8725: JWT Best Current Practices",
+      "url": "https://www.rfc-editor.org/rfc/rfc8725"
+    },
+    {
+      "title": "OWASP: Session Management Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "key": "jwt",
+  "track": "backend",
+  "order": 3,
+  "title": "JWT y autenticación",
+  "summary": "Tokens firmados: qué garantizan, qué no, y cómo usarlos sin sorpresas.",
+  "cards": [
+    {
+      "id": "jwt-structure",
+      "level": "beginner",
+      "question": "¿Cómo está compuesto un JWT?",
+      "answer": "Tres partes en base64url separadas por puntos: header.payload.signature. El payload está firmado pero NO cifrado: cualquiera puede leerlo, así que no pongas secretos ahí."
+    },
+    {
+      "id": "jwt-vs-session",
+      "level": "intermediate",
+      "question": "¿JWT o sesión en servidor? ¿Qué se gana y qué se pierde?",
+      "answer": "El JWT es stateless: cualquier instancia lo valida con la clave, sin almacén compartido. El costo es la revocación: hasta que expira sigue siendo válido. Las sesiones se revocan al instante pero requieren un almacén compartido."
+    },
+    {
+      "id": "jwt-storage",
+      "level": "intermediate",
+      "question": "¿Dónde guardar el JWT en el navegador?",
+      "answer": "En localStorage cualquier XSS puede leerlo. Una cookie HttpOnly + Secure + SameSite no es legible desde JavaScript, pero exige defensa contra CSRF. No hay opción gratis: se elige qué ataque mitigar y cómo."
+    },
+    {
+      "id": "refresh-tokens",
+      "level": "intermediate",
+      "question": "¿Para qué sirve un refresh token?",
+      "answer": "Permite que el access token viva poco (minutos) limitando el daño si se filtra. El refresh token, más duradero, se usa solo para pedir uno nuevo y se rota en cada uso para detectar su robo."
+    },
+    {
+      "id": "jwt-alg-validation",
+      "level": "advanced",
+      "question": "¿Qué errores de validación han causado vulnerabilidades graves en JWT?",
+      "answer": "Aceptar el algoritmo que declara el propio token: alg=none sin firma, o confundir RS256 con HS256 usando la clave pública como secreto. Se evita fijando en el servidor los algoritmos permitidos y validando exp, iss y aud."
+    },
+    {
+      "id": "jwt-revocation",
+      "level": "advanced",
+      "question": "¿Cómo se revoca un JWT antes de que expire?",
+      "answer": "Con TTL cortos más una lista de revocación por jti, o un número de versión del token por usuario comparado en cada petición. Ambos reintroducen estado, es el compromiso inherente del enfoque stateless."
+    }
+  ],
+  "resources": [
+    {
+      "title": "JWT.io: Introduction",
+      "url": "https://jwt.io/introduction"
+    },
+    {
+      "title": "RFC 7519: JSON Web Token",
+      "url": "https://www.rfc-editor.org/rfc/rfc7519"
+    },
+    {
+      "title": "RFC 8725: JWT Best Current Practices",
+      "url": "https://www.rfc-editor.org/rfc/rfc8725"
+    },
+    {
+      "title": "OWASP: Session Management Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html"
+    }
+  ]
+}

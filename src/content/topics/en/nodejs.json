@@ -1,0 +1,59 @@
+{
+  "key": "nodejs",
+  "track": "backend",
+  "order": 6,
+  "title": "Node.js",
+  "summary": "The event loop, concurrency and how not to block the process.",
+  "cards": [
+    {
+      "id": "event-loop",
+      "level": "beginner",
+      "question": "How does Node.js handle concurrency if it is single-threaded?",
+      "answer": "It runs your JavaScript on one thread and delegates I/O to libuv and the OS. When an operation finishes its callback is queued and the event loop runs it when the thread is free."
+    },
+    {
+      "id": "microtasks-order",
+      "level": "intermediate",
+      "question": "In what order do process.nextTick, promises and setTimeout run?",
+      "answer": "process.nextTick and promise microtasks run when the current operation finishes, before returning to the event loop (nextTick first). setTimeout and setImmediate callbacks run later, in the timers and check phases."
+    },
+    {
+      "id": "blocking-event-loop",
+      "level": "intermediate",
+      "question": "What happens if you do heavy computation in a handler?",
+      "answer": "It blocks the event loop: no other request is served until it finishes. Move CPU-bound work to worker_threads, a separate process or a job queue."
+    },
+    {
+      "id": "streams-backpressure",
+      "level": "intermediate",
+      "question": "What are streams and backpressure?",
+      "answer": "They process data in chunks instead of loading it all into memory. Backpressure is the signal a slow consumer uses to ask the producer to pause; pipeline() handles it and propagates errors."
+    },
+    {
+      "id": "cluster-vs-workers",
+      "level": "advanced",
+      "question": "What is the difference between cluster and worker_threads?",
+      "answer": "cluster spawns independent processes sharing a port: it scales HTTP requests across cores. worker_threads spawns threads inside one process, with shareable memory, aimed at CPU-bound work."
+    },
+    {
+      "id": "graceful-shutdown",
+      "level": "advanced",
+      "question": "How do you gracefully shut down a Node.js service?",
+      "answer": "On SIGTERM: stop accepting new connections, wait for in-flight requests to finish, close the database pool and exit with code 0, with a timeout in case something hangs."
+    }
+  ],
+  "resources": [
+    {
+      "title": "Node.js: The Event Loop, Timers, and nextTick",
+      "url": "https://nodejs.org/en/learn/asynchronous-work/event-loop-timers-and-nexttick"
+    },
+    {
+      "title": "Node.js: Backpressuring in Streams",
+      "url": "https://nodejs.org/en/learn/modules/backpressuring-in-streams"
+    },
+    {
+      "title": "Node.js docs: worker_threads",
+      "url": "https://nodejs.org/api/worker_threads.html"
+    }
+  ]
+}

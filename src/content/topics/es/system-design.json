@@ -1,0 +1,65 @@
+{
+  "key": "system-design",
+  "track": "backend",
+  "order": 7,
+  "title": "System design",
+  "summary": "Trade-offs, escala y modos de falla: el núcleo de una entrevista senior.",
+  "cards": [
+    {
+      "id": "vertical-vs-horizontal",
+      "level": "beginner",
+      "question": "¿Escalado vertical u horizontal?",
+      "answer": "Vertical: una máquina más potente; simple pero con techo y punto único de falla. Horizontal: más instancias detrás de un balanceador; escala más y tolera fallos, pero exige servicios sin estado o con estado compartido."
+    },
+    {
+      "id": "caching-strategies",
+      "level": "intermediate",
+      "question": "¿Qué estrategias de caché conoces y qué riesgos tienen?",
+      "answer": "Cache-aside (la app lee y rellena la caché), write-through y write-behind. Riesgos: datos obsoletos, invalidación difícil y cache stampede, cuando muchas peticiones recalculan a la vez una clave expirada; se mitiga con locks, TTL con jitter o refresco anticipado."
+    },
+    {
+      "id": "rate-limiting",
+      "level": "intermediate",
+      "question": "¿Cómo diseñarías un rate limiter?",
+      "answer": "Algoritmos comunes: token bucket (permite ráfagas controladas) y sliding window. Con varias instancias el contador vive en un almacén compartido como Redis, con operaciones atómicas. Se responde 429 con Retry-After."
+    },
+    {
+      "id": "message-queues",
+      "level": "intermediate",
+      "question": "¿Para qué sirve una cola de mensajes y qué garantías da?",
+      "answer": "Desacopla productores y consumidores, absorbe picos y permite reintentos. La entrega suele ser at-least-once, por lo que los consumidores deben ser idempotentes porque un mensaje puede llegar más de una vez."
+    },
+    {
+      "id": "cap-theorem",
+      "level": "advanced",
+      "question": "¿Qué dice el teorema CAP en la práctica?",
+      "answer": "Ante una partición de red hay que elegir entre consistencia y disponibilidad: o se rechazan peticiones para no devolver datos desactualizados, o se responde con datos posiblemente viejos. Sin partición se puede tener ambas; el trade-off real es también latencia vs consistencia (PACELC)."
+    },
+    {
+      "id": "idempotency-keys",
+      "level": "advanced",
+      "question": "¿Cómo evitas cobrar dos veces cuando el cliente reintenta un pago?",
+      "answer": "Con una clave de idempotencia enviada por el cliente: el servidor guarda el resultado de la primera ejecución asociado a esa clave y devuelve el mismo resultado ante los reintentos, en lugar de repetir el efecto."
+    },
+    {
+      "id": "url-shortener",
+      "level": "advanced",
+      "question": "¿Cómo abordarías diseñar un acortador de URLs?",
+      "answer": "Aclara requisitos (escala, expiración, analíticas). Es lectura intensiva: clave corta única (contador codificado en base62 o hash con control de colisiones), almacén clave-valor, caché para las redirecciones más pedidas, 301 vs 302 según se quiera medir clics, y analíticas de forma asíncrona."
+    }
+  ],
+  "resources": [
+    {
+      "title": "System Design Primer",
+      "url": "https://github.com/donnemartin/system-design-primer"
+    },
+    {
+      "title": "Amazon Builders' Library",
+      "url": "https://aws.amazon.com/builders-library/"
+    },
+    {
+      "title": "Designing Data-Intensive Applications",
+      "url": "https://dataintensive.net/"
+    }
+  ]
+}

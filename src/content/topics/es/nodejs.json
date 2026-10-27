@@ -1,0 +1,59 @@
+{
+  "key": "nodejs",
+  "track": "backend",
+  "order": 6,
+  "title": "Node.js",
+  "summary": "El event loop, la concurrencia y cómo no bloquear el proceso.",
+  "cards": [
+    {
+      "id": "event-loop",
+      "level": "beginner",
+      "question": "¿Cómo maneja Node.js la concurrencia si es de un solo hilo?",
+      "answer": "Ejecuta tu JavaScript en un hilo y delega la E/S a libuv y al sistema operativo. Cuando una operación termina, su callback entra en una cola y el event loop lo ejecuta cuando el hilo está libre."
+    },
+    {
+      "id": "microtasks-order",
+      "level": "intermediate",
+      "question": "¿En qué orden se ejecutan process.nextTick, promesas y setTimeout?",
+      "answer": "process.nextTick y las microtareas de promesas se ejecutan al terminar la operación actual, antes de volver al event loop (nextTick primero). Los callbacks de setTimeout y setImmediate corren después, en las fases timers y check."
+    },
+    {
+      "id": "blocking-event-loop",
+      "level": "intermediate",
+      "question": "¿Qué pasa si haces un cálculo pesado en un handler?",
+      "answer": "Bloquea el event loop: ninguna otra petición se atiende hasta que termine. Se mueve el trabajo CPU-bound a worker_threads, a un proceso aparte o a una cola de trabajos."
+    },
+    {
+      "id": "streams-backpressure",
+      "level": "intermediate",
+      "question": "¿Qué son los streams y el backpressure?",
+      "answer": "Procesan datos por fragmentos en lugar de cargarlos enteros en memoria. El backpressure es la señal con la que un consumidor lento pide al productor que pause; pipeline() lo gestiona y propaga errores."
+    },
+    {
+      "id": "cluster-vs-workers",
+      "level": "advanced",
+      "question": "¿Diferencia entre cluster y worker_threads?",
+      "answer": "cluster crea procesos independientes que comparten el puerto: sirve para escalar peticiones HTTP entre núcleos. worker_threads crea hilos dentro del mismo proceso, con memoria compartible, pensados para trabajo CPU-bound."
+    },
+    {
+      "id": "graceful-shutdown",
+      "level": "advanced",
+      "question": "¿Cómo haces un apagado ordenado de un servicio Node.js?",
+      "answer": "Al recibir SIGTERM: dejar de aceptar conexiones nuevas, esperar a que terminen las peticiones en curso, cerrar el pool de base de datos y salir con código 0, con un tiempo límite por si algo se cuelga."
+    }
+  ],
+  "resources": [
+    {
+      "title": "Node.js: The Event Loop, Timers, and nextTick",
+      "url": "https://nodejs.org/en/learn/asynchronous-work/event-loop-timers-and-nexttick"
+    },
+    {
+      "title": "Node.js: Backpressuring in Streams",
+      "url": "https://nodejs.org/en/learn/modules/backpressuring-in-streams"
+    },
+    {
+      "title": "Node.js docs: worker_threads",
+      "url": "https://nodejs.org/api/worker_threads.html"
+    }
+  ]
+}

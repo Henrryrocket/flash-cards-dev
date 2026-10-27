@@ -1,0 +1,59 @@
+{
+  "key": "sql",
+  "track": "backend",
+  "order": 4,
+  "title": "SQL",
+  "summary": "Queries, indexes and transactions: what every interview asks.",
+  "cards": [
+    {
+      "id": "inner-vs-left-join",
+      "level": "beginner",
+      "question": "What is the difference between INNER JOIN and LEFT JOIN?",
+      "answer": "INNER JOIN returns only rows matching in both tables. LEFT JOIN returns all left rows, with NULL in right-side columns when there is no match."
+    },
+    {
+      "id": "where-vs-having",
+      "level": "beginner",
+      "question": "What is the difference between WHERE and HAVING?",
+      "answer": "WHERE filters rows before grouping; HAVING filters groups after GROUP BY, so it can use aggregates like COUNT()."
+    },
+    {
+      "id": "index-tradeoffs",
+      "level": "intermediate",
+      "question": "What is an index and what does it cost?",
+      "answer": "A structure (usually a B-tree) that speeds up lookups and sorting. It costs space and slows writes, since every INSERT/UPDATE/DELETE must maintain it."
+    },
+    {
+      "id": "composite-index-order",
+      "level": "intermediate",
+      "question": "Does column order matter in a composite index?",
+      "answer": "Yes. An index (a, b) serves filters on a, or on a and b, but not efficiently on b alone (leftmost prefix rule). Put equality and more selective columns first."
+    },
+    {
+      "id": "isolation-levels",
+      "level": "advanced",
+      "question": "Which anomalies do isolation levels prevent?",
+      "answer": "Read Committed prevents dirty reads; Repeatable Read also prevents non-repeatable reads; Serializable also prevents phantoms and behaves as if transactions ran serially. More isolation, less concurrency."
+    },
+    {
+      "id": "window-functions",
+      "level": "advanced",
+      "question": "What do window functions offer over GROUP BY?",
+      "answer": "They compute over a set of related rows without collapsing them: for example ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY created_at DESC) to get each user's latest record."
+    }
+  ],
+  "resources": [
+    {
+      "title": "Use The Index, Luke",
+      "url": "https://use-the-index-luke.com/"
+    },
+    {
+      "title": "PostgreSQL: Transaction Isolation",
+      "url": "https://www.postgresql.org/docs/current/transaction-iso.html"
+    },
+    {
+      "title": "PostgreSQL: Window Functions tutorial",
+      "url": "https://www.postgresql.org/docs/current/tutorial-window.html"
+    }
+  ]
+}

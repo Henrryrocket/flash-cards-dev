@@ -1,0 +1,59 @@
+{
+  "key": "sql",
+  "track": "backend",
+  "order": 4,
+  "title": "SQL",
+  "summary": "Consultas, índices y transacciones: lo que se pregunta en toda entrevista.",
+  "cards": [
+    {
+      "id": "inner-vs-left-join",
+      "level": "beginner",
+      "question": "¿Diferencia entre INNER JOIN y LEFT JOIN?",
+      "answer": "INNER JOIN devuelve solo filas con coincidencia en ambas tablas. LEFT JOIN devuelve todas las de la izquierda y NULL en las columnas de la derecha cuando no hay coincidencia."
+    },
+    {
+      "id": "where-vs-having",
+      "level": "beginner",
+      "question": "¿Diferencia entre WHERE y HAVING?",
+      "answer": "WHERE filtra filas antes de agrupar; HAVING filtra grupos después de aplicar GROUP BY, por lo que puede usar agregados como COUNT()."
+    },
+    {
+      "id": "index-tradeoffs",
+      "level": "intermediate",
+      "question": "¿Qué es un índice y qué cuesta?",
+      "answer": "Una estructura (normalmente B-tree) que acelera búsquedas y ordenamientos. Cuesta espacio y hace más lentas las escrituras, porque cada INSERT/UPDATE/DELETE debe mantenerlo."
+    },
+    {
+      "id": "composite-index-order",
+      "level": "intermediate",
+      "question": "¿Importa el orden de las columnas en un índice compuesto?",
+      "answer": "Sí. Un índice (a, b) sirve para filtrar por a o por a y b, pero no es eficiente solo por b (regla del prefijo izquierdo). Se ponen primero las columnas por igualdad y más selectivas."
+    },
+    {
+      "id": "isolation-levels",
+      "level": "advanced",
+      "question": "¿Qué anomalías previenen los niveles de aislamiento?",
+      "answer": "Read Committed evita lecturas sucias; Repeatable Read también las lecturas no repetibles; Serializable evita además las fantasma y el resultado equivale a ejecutar las transacciones en serie. Más aislamiento, menos concurrencia."
+    },
+    {
+      "id": "window-functions",
+      "level": "advanced",
+      "question": "¿Qué aportan las window functions frente a GROUP BY?",
+      "answer": "Calculan sobre un conjunto de filas relacionadas sin colapsarlas: por ejemplo ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY created_at DESC) para obtener el último registro por usuario."
+    }
+  ],
+  "resources": [
+    {
+      "title": "Use The Index, Luke",
+      "url": "https://use-the-index-luke.com/"
+    },
+    {
+      "title": "PostgreSQL: Transaction Isolation",
+      "url": "https://www.postgresql.org/docs/current/transaction-iso.html"
+    },
+    {
+      "title": "PostgreSQL: Window Functions tutorial",
+      "url": "https://www.postgresql.org/docs/current/tutorial-window.html"
+    }
+  ]
+}

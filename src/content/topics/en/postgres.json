@@ -1,0 +1,59 @@
+{
+  "key": "postgres",
+  "track": "backend",
+  "order": 5,
+  "title": "PostgreSQL",
+  "summary": "How it works under the hood and how to run it well.",
+  "cards": [
+    {
+      "id": "acid",
+      "level": "beginner",
+      "question": "What does ACID mean?",
+      "answer": "Atomicity (all or nothing), Consistency (constraints hold), Isolation (concurrent transactions do not interfere) and Durability (committed data survives a crash)."
+    },
+    {
+      "id": "mvcc",
+      "level": "intermediate",
+      "question": "What is MVCC in PostgreSQL?",
+      "answer": "Each UPDATE creates a new row version and transactions see the one matching their snapshot. Readers do not block writers. Dead versions are cleaned up by VACUUM."
+    },
+    {
+      "id": "explain-analyze",
+      "level": "intermediate",
+      "question": "How do you diagnose a slow query?",
+      "answer": "With EXPLAIN (ANALYZE, BUFFERS): it shows the real plan, timings, and estimated vs actual rows. A big gap between them usually means stale statistics (ANALYZE) or a missing index."
+    },
+    {
+      "id": "index-types",
+      "level": "intermediate",
+      "question": "Which index types does PostgreSQL offer and when to use each?",
+      "answer": "B-tree (default: equality and ranges), GIN (jsonb, arrays, full-text), GiST (geometry and ranges), BRIN (huge tables whose data correlates with physical order) and Hash (equality only)."
+    },
+    {
+      "id": "connection-pooling",
+      "level": "advanced",
+      "question": "Why do you need connection pooling?",
+      "answer": "Each connection is a server process with a memory cost. Thousands of direct connections degrade the database. A pooler such as PgBouncer multiplexes many client connections over few real ones."
+    },
+    {
+      "id": "skip-locked",
+      "level": "advanced",
+      "question": "How do you build a job queue on PostgreSQL?",
+      "answer": "With SELECT ... FOR UPDATE SKIP LOCKED: each worker claims pending rows nobody else has locked, without waiting or double-processing. Fine for moderate volumes before moving to a dedicated broker."
+    }
+  ],
+  "resources": [
+    {
+      "title": "PostgreSQL: Concurrency Control (MVCC)",
+      "url": "https://www.postgresql.org/docs/current/mvcc-intro.html"
+    },
+    {
+      "title": "PostgreSQL: Using EXPLAIN",
+      "url": "https://www.postgresql.org/docs/current/using-explain.html"
+    },
+    {
+      "title": "PostgreSQL: Index Types",
+      "url": "https://www.postgresql.org/docs/current/indexes-types.html"
+    }
+  ]
+}

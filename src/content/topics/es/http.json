@@ -5,12 +5,59 @@
   "title": "HTTP",
   "summary": "El protocolo sobre el que se construye casi todo el backend web.",
   "cards": [
-    { "id": "idempotent-methods", "level": "beginner", "question": "¿Qué significa que un método HTTP sea idempotente?", "answer": "Repetir la misma petición produce el mismo estado final en el servidor. GET, PUT y DELETE son idempotentes; POST no." },
-    { "id": "put-vs-patch", "level": "intermediate", "question": "¿Diferencia entre PUT y PATCH?", "answer": "PUT reemplaza el recurso completo; PATCH aplica una modificación parcial. PUT es idempotente por definición, PATCH depende de su implementación." },
-    { "id": "http2-vs-http1", "level": "advanced", "question": "¿Qué problema resuelve HTTP/2 frente a HTTP/1.1?", "answer": "Multiplexación de streams sobre una sola conexión TCP, eliminando el head-of-line blocking a nivel HTTP y comprimiendo cabeceras con HPACK. El bloqueo a nivel TCP persiste; HTTP/3 (QUIC) lo resuelve." }
+    {
+      "id": "idempotent-methods",
+      "level": "beginner",
+      "question": "¿Qué significa que un método HTTP sea idempotente?",
+      "answer": "Repetir la misma petición produce el mismo estado final en el servidor. GET, PUT y DELETE son idempotentes; POST no."
+    },
+    {
+      "id": "401-vs-403",
+      "level": "beginner",
+      "question": "¿Diferencia entre 401 y 403?",
+      "answer": "401: no autenticado, faltan credenciales válidas. 403: el servidor sabe quién eres pero no tienes permiso para ese recurso."
+    },
+    {
+      "id": "put-vs-patch",
+      "level": "intermediate",
+      "question": "¿Diferencia entre PUT y PATCH?",
+      "answer": "PUT reemplaza el recurso completo; PATCH aplica una modificación parcial. PUT es idempotente por definición, PATCH depende de su implementación."
+    },
+    {
+      "id": "etag-caching",
+      "level": "intermediate",
+      "question": "¿Cómo funciona el cacheo condicional con ETag?",
+      "answer": "El servidor envía un ETag que identifica la versión. El cliente lo reenvía en If-None-Match; si no cambió, el servidor responde 304 sin cuerpo y el cliente reutiliza su copia."
+    },
+    {
+      "id": "cors-preflight",
+      "level": "intermediate",
+      "question": "¿Qué es CORS y para qué sirve el preflight?",
+      "answer": "Es una política del navegador que restringe peticiones entre orígenes; el servidor declara los permitidos con Access-Control-Allow-Origin. Para peticiones no simples el navegador envía antes un OPTIONS (preflight) para preguntar si están permitidas. No protege al servidor: solo al usuario en el navegador."
+    },
+    {
+      "id": "http2-vs-http1",
+      "level": "advanced",
+      "question": "¿Qué problema resuelve HTTP/2 frente a HTTP/1.1?",
+      "answer": "Multiplexación de streams sobre una sola conexión TCP, eliminando el head-of-line blocking a nivel HTTP y comprimiendo cabeceras con HPACK. El bloqueo a nivel TCP persiste; HTTP/3 (QUIC) lo resuelve."
+    }
   ],
   "resources": [
-    { "title": "MDN: Overview of HTTP", "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview" },
-    { "title": "RFC 9110: HTTP Semantics", "url": "https://www.rfc-editor.org/rfc/rfc9110" }
+    {
+      "title": "MDN: Overview of HTTP",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview"
+    },
+    {
+      "title": "RFC 9110: HTTP Semantics",
+      "url": "https://www.rfc-editor.org/rfc/rfc9110"
+    },
+    {
+      "title": "MDN: HTTP caching",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching"
+    },
+    {
+      "title": "MDN: CORS",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+    }
   ]
 }

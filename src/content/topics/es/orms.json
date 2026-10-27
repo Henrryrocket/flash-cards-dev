@@ -1,0 +1,69 @@
+{
+  "key": "orms",
+  "track": "backend",
+  "order": 11,
+  "title": "ORMs y Prisma",
+  "summary": "Mapear tablas a objetos sin perder el control de las consultas.",
+  "cards": [
+    {
+      "id": "what-is-orm",
+      "level": "beginner",
+      "question": "¿Qué es un ORM y qué compromisos tiene?",
+      "answer": "Una capa que mapea tablas a objetos y genera SQL por ti. Aporta productividad y seguridad de tipos; a cambio oculta las consultas reales, puede generar SQL ineficiente y la abstracción se filtra en casos complejos."
+    },
+    {
+      "id": "n-plus-one",
+      "level": "intermediate",
+      "question": "¿Qué es el problema N+1 y cómo se evita?",
+      "answer": "Una consulta para listar N filas más N consultas adicionales para cargar sus relaciones una a una. Se evita cargando las relaciones en bloque (include/select en Prisma, joins o batching) y revisando los logs de consultas."
+    },
+    {
+      "id": "prisma-migrations",
+      "level": "intermediate",
+      "question": "¿Cuándo usar prisma migrate dev, migrate deploy y db push?",
+      "answer": "migrate dev genera y aplica migraciones en desarrollo. migrate deploy solo aplica las pendientes y es el comando para CI y producción. db push sincroniza el esquema sin historial de migraciones: sirve para prototipar, no para producción."
+    },
+    {
+      "id": "prisma-transactions",
+      "level": "intermediate",
+      "question": "¿Cómo haces varias escrituras atómicas en Prisma?",
+      "answer": "Con prisma.$transaction: la forma de array ejecuta varias operaciones juntas, y la interactiva ($transaction(async tx => ...)) permite lógica intermedia. Se mantienen cortas para no retener conexiones ni bloqueos."
+    },
+    {
+      "id": "raw-sql-injection",
+      "level": "advanced",
+      "question": "¿Cómo usas SQL crudo en Prisma sin abrir una inyección SQL?",
+      "answer": "Con $queryRaw como plantilla etiquetada: los valores interpolados se envían como parámetros. Nunca se concatena texto para armar la consulta ni se pasa entrada del usuario a $queryRawUnsafe."
+    },
+    {
+      "id": "prisma-connections",
+      "level": "advanced",
+      "question": "¿Qué problemas de conexiones aparecen con Prisma en serverless o en desarrollo?",
+      "answer": "Cada instancia o recarga en caliente puede crear otro PrismaClient con su propio pool y agotar las conexiones de la base. Se usa un único cliente compartido y, en serverless, un pooler externo (PgBouncer o un servicio de pooling)."
+    },
+    {
+      "id": "orm-vs-query-builder",
+      "level": "advanced",
+      "question": "¿ORM o query builder?",
+      "answer": "Un query builder (Kysely, Knex) se acerca más al SQL: control total y consultas predecibles, con menos abstracción. Un ORM ofrece más productividad en CRUD y relaciones. Muchos equipos usan el ORM para lo común y SQL explícito para las consultas críticas."
+    }
+  ],
+  "resources": [
+    {
+      "title": "Prisma: Relation queries",
+      "url": "https://www.prisma.io/docs/orm/prisma-client/queries/relation-queries"
+    },
+    {
+      "title": "Prisma: Migrate",
+      "url": "https://www.prisma.io/docs/orm/prisma-migrate"
+    },
+    {
+      "title": "Prisma: Transactions",
+      "url": "https://www.prisma.io/docs/orm/prisma-client/queries/transactions"
+    },
+    {
+      "title": "Prisma: Raw queries",
+      "url": "https://www.prisma.io/docs/orm/prisma-client/using-raw-sql/raw-queries"
+    }
+  ]
+}

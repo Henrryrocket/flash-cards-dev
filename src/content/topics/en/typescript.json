@@ -1,0 +1,69 @@
+{
+  "key": "typescript",
+  "track": "backend",
+  "order": 10,
+  "title": "TypeScript",
+  "summary": "The type system: what it guarantees and where its protection ends.",
+  "cards": [
+    {
+      "id": "any-vs-unknown",
+      "level": "beginner",
+      "question": "What is the difference between any and unknown?",
+      "answer": "any turns type checking off. unknown accepts any value but forces you to check or narrow the type before using it, which is why it is the safe alternative."
+    },
+    {
+      "id": "utility-types",
+      "level": "beginner",
+      "question": "What are utility types? Give examples.",
+      "answer": "Built-in generic types that transform others: Partial<T> (all optional), Pick<T, K> and Omit<T, K> (select or exclude properties), Record<K, V> and ReturnType<F>."
+    },
+    {
+      "id": "interface-vs-type",
+      "level": "intermediate",
+      "question": "interface or type?",
+      "answer": "They overlap a lot. Only interface supports declaration merging and natural extends between objects; only type can express unions, mapped and conditional types. What matters is consistency within a project."
+    },
+    {
+      "id": "structural-typing",
+      "level": "intermediate",
+      "question": "What does it mean that TypeScript is structurally typed?",
+      "answer": "Compatibility depends on a value's shape, not the type's name: if an object has the required properties it is assignable even if it never declares implementing the interface."
+    },
+    {
+      "id": "generics",
+      "level": "intermediate",
+      "question": "What are generics and constraints for?",
+      "answer": "They let you write reusable code that preserves the relationship between input and output types instead of losing it with any. extends constrains valid types: <T extends { id: string }>."
+    },
+    {
+      "id": "discriminated-unions",
+      "level": "advanced",
+      "question": "What is a discriminated union and how do you check exhaustiveness?",
+      "answer": "A union of types sharing a literal property (for example kind) that lets you narrow the type in a switch. To guarantee exhaustiveness assign the default case to never: if you add a variant and forget to handle it, compilation fails."
+    },
+    {
+      "id": "runtime-validation",
+      "level": "advanced",
+      "question": "If I use TypeScript, why must I validate API input?",
+      "answer": "Types are erased at compile time: they do not exist at runtime, and external JSON can have any shape. Validate at the boundary with a library such as Zod and derive the type from the schema so type and validation never diverge."
+    }
+  ],
+  "resources": [
+    {
+      "title": "TypeScript Handbook",
+      "url": "https://www.typescriptlang.org/docs/handbook/intro.html"
+    },
+    {
+      "title": "TypeScript: Narrowing",
+      "url": "https://www.typescriptlang.org/docs/handbook/2/narrowing.html"
+    },
+    {
+      "title": "TypeScript: Utility Types",
+      "url": "https://www.typescriptlang.org/docs/handbook/utility-types.html"
+    },
+    {
+      "title": "Zod",
+      "url": "https://zod.dev/"
+    }
+  ]
+}

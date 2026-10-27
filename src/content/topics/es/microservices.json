@@ -1,0 +1,79 @@
+{
+  "key": "microservices",
+  "track": "backend",
+  "order": 15,
+  "title": "Microservicios",
+  "summary": "Qué ganas, qué pagas y los patrones para no ahogarte en la complejidad.",
+  "cards": [
+    {
+      "id": "what-are-microservices",
+      "level": "beginner",
+      "question": "¿Qué es un microservicio y cuándo NO usarlos?",
+      "answer": "Un servicio pequeño, desplegable de forma independiente y organizado alrededor de una capacidad de negocio, con sus propios datos. No conviene con un equipo pequeño o un dominio aún poco claro: se paga complejidad distribuida sin necesitar la escala."
+    },
+    {
+      "id": "service-boundaries",
+      "level": "intermediate",
+      "question": "¿Cómo defines los límites entre servicios?",
+      "answer": "Por capacidad de negocio o contexto delimitado (DDD), no por capas técnicas. Cada servicio es dueño de sus datos y ningún otro accede a su base directamente. Si dos servicios deben cambiar siempre juntos, el límite está mal puesto."
+    },
+    {
+      "id": "sync-vs-async",
+      "level": "intermediate",
+      "question": "¿Comunicación síncrona o asíncrona entre servicios?",
+      "answer": "Síncrona (REST, gRPC): simple y da respuesta inmediata, pero acopla disponibilidad y propaga fallos en cascada. Asíncrona (eventos, colas): desacopla y absorbe picos, a costa de consistencia eventual y de depurar flujos más difíciles."
+    },
+    {
+      "id": "api-gateway",
+      "level": "intermediate",
+      "question": "¿Para qué sirve un API gateway y qué riesgo introduce?",
+      "answer": "Es el punto de entrada único: enruta, autentica, aplica límites de uso y puede agregar respuestas. El riesgo es convertirlo en un cuello de botella, en un punto único de falla o en un lugar donde se acumula lógica de negocio."
+    },
+    {
+      "id": "observability",
+      "level": "intermediate",
+      "question": "¿Cómo depuras una petición que atraviesa varios servicios?",
+      "answer": "Con trazas distribuidas: un identificador de correlación que viaja en cada llamada (OpenTelemetry) y permite reconstruir el camino completo, combinado con logs estructurados y métricas. Sin esto, los fallos en producción son casi imposibles de rastrear."
+    },
+    {
+      "id": "saga-pattern",
+      "level": "advanced",
+      "question": "¿Cómo mantienes la consistencia sin transacciones distribuidas?",
+      "answer": "Con una saga: una secuencia de transacciones locales, cada una con una acción compensatoria que la deshace si un paso posterior falla. Puede coordinarla un orquestador central o puede ser coreografiada mediante eventos."
+    },
+    {
+      "id": "resilience-patterns",
+      "level": "advanced",
+      "question": "¿Qué patrones evitan los fallos en cascada?",
+      "answer": "Timeouts en toda llamada, reintentos con backoff exponencial y jitter (solo sobre operaciones idempotentes), circuit breaker que corta las llamadas a un servicio caído y bulkheads que aíslan recursos para que un fallo no consuma todo."
+    },
+    {
+      "id": "transactional-outbox",
+      "level": "advanced",
+      "question": "¿Qué problema resuelve el patrón transactional outbox?",
+      "answer": "El doble escritura: guardar en la base y publicar un evento no es atómico, y un fallo entre ambos deja datos inconsistentes. Se guarda el evento en una tabla outbox dentro de la misma transacción y un proceso aparte lo publica, con entrega at-least-once."
+    }
+  ],
+  "resources": [
+    {
+      "title": "Martin Fowler: Microservices",
+      "url": "https://martinfowler.com/articles/microservices.html"
+    },
+    {
+      "title": "microservices.io: Patterns",
+      "url": "https://microservices.io/patterns/"
+    },
+    {
+      "title": "microservices.io: Saga",
+      "url": "https://microservices.io/patterns/data/saga.html"
+    },
+    {
+      "title": "microservices.io: Transactional outbox",
+      "url": "https://microservices.io/patterns/data/transactional-outbox.html"
+    },
+    {
+      "title": "OpenTelemetry: Observability primer",
+      "url": "https://opentelemetry.io/docs/concepts/observability-primer/"
+    }
+  ]
+}

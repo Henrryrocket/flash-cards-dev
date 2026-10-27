@@ -1,0 +1,63 @@
+{
+  "key": "docker",
+  "track": "backend",
+  "order": 9,
+  "title": "Docker",
+  "summary": "Images, containers and how to build them securely.",
+  "cards": [
+    {
+      "id": "image-vs-container",
+      "level": "beginner",
+      "question": "What is the difference between an image and a container?",
+      "answer": "An image is an immutable, read-only template made of layers. A container is a running instance of an image with an ephemeral writable layer on top."
+    },
+    {
+      "id": "volumes-vs-bind-mounts",
+      "level": "intermediate",
+      "question": "When do you use volumes and when bind mounts?",
+      "answer": "A container filesystem is ephemeral. Volumes are managed by Docker and are the way to persist data (for example a database). Bind mounts map a host path and are used in development to see code changes instantly."
+    },
+    {
+      "id": "layer-caching",
+      "level": "intermediate",
+      "question": "Why does instruction order matter in a Dockerfile?",
+      "answer": "Each instruction creates a cached layer; if one changes, all following ones are invalidated. Order from least to most changing: copy package.json and install dependencies first, then copy the source."
+    },
+    {
+      "id": "multi-stage-builds",
+      "level": "intermediate",
+      "question": "What is a multi-stage build and what does it give you?",
+      "answer": "You use one stage with all build tools and copy only the output into a minimal final image. The image is smaller, pulls faster and exposes less attack surface."
+    },
+    {
+      "id": "container-security",
+      "level": "advanced",
+      "question": "Which security measures do you apply to a production image?",
+      "answer": "Non-root user, minimal base image pinned by version or digest, no secrets inside layers (inject them at runtime), vulnerability scanning, read-only filesystem and dropped Linux capabilities."
+    },
+    {
+      "id": "pid1-signals",
+      "level": "advanced",
+      "question": "Why can a Node.js container be slow to stop with docker stop?",
+      "answer": "The main process is PID 1, which gets no default signal handling: SIGTERM may be ignored and Docker ends up sending SIGKILL after the timeout. Use exec-form CMD, an init such as tini (docker run --init) and a SIGTERM handler in the app."
+    }
+  ],
+  "resources": [
+    {
+      "title": "Docker: Building best practices",
+      "url": "https://docs.docker.com/build/building/best-practices/"
+    },
+    {
+      "title": "Docker: Multi-stage builds",
+      "url": "https://docs.docker.com/build/building/multi-stage/"
+    },
+    {
+      "title": "OWASP: Docker Security Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Docker_Security_Cheat_Sheet.html"
+    },
+    {
+      "title": "Docker: Volumes",
+      "url": "https://docs.docker.com/engine/storage/volumes/"
+    }
+  ]
+}

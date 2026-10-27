@@ -1,0 +1,63 @@
+{
+  "key": "git",
+  "track": "backend",
+  "order": 8,
+  "title": "Git",
+  "summary": "Historial, ramas y cómo recuperarte de errores.",
+  "cards": [
+    {
+      "id": "fetch-vs-pull",
+      "level": "beginner",
+      "question": "¿Diferencia entre git fetch y git pull?",
+      "answer": "fetch descarga los cambios remotos sin tocar tu rama ni tu directorio de trabajo. pull es fetch seguido de merge (o rebase, si se configura)."
+    },
+    {
+      "id": "staging-area",
+      "level": "beginner",
+      "question": "¿Para qué sirve el área de preparación (staging)?",
+      "answer": "Permite elegir exactamente qué cambios entran en el próximo commit, incluso partes de un archivo con git add -p, para construir commits pequeños y coherentes."
+    },
+    {
+      "id": "merge-vs-rebase",
+      "level": "intermediate",
+      "question": "¿Merge o rebase? ¿Cuándo usar cada uno?",
+      "answer": "merge une dos historiales con un commit de unión y conserva la historia real. rebase reaplica tus commits sobre otra base y deja un historial lineal, pero reescribe los hashes. Regla: nunca hagas rebase de ramas que otros ya han descargado."
+    },
+    {
+      "id": "reset-vs-revert",
+      "level": "intermediate",
+      "question": "¿Diferencia entre git reset y git revert?",
+      "answer": "reset mueve el puntero de la rama y reescribe el historial (--soft conserva índice y archivos, --mixed el directorio de trabajo, --hard descarta todo). revert crea un commit nuevo que deshace otro, por eso es seguro en ramas compartidas."
+    },
+    {
+      "id": "reflog-recovery",
+      "level": "advanced",
+      "question": "Hiciste un reset --hard y perdiste commits. ¿Cómo los recuperas?",
+      "answer": "Con git reflog, que registra localmente dónde han apuntado HEAD y las ramas. Localizas el hash anterior y haces git reset --hard o git branch nueva <hash>. Los commits inalcanzables se conservan unos 30 días antes de limpiarse."
+    },
+    {
+      "id": "git-bisect",
+      "level": "advanced",
+      "question": "¿Cómo encuentras qué commit introdujo un bug?",
+      "answer": "Con git bisect: marcas un commit malo y uno bueno y Git hace búsqueda binaria entre ellos. Con git bisect run <script> lo automatizas si tienes un test que falla."
+    }
+  ],
+  "resources": [
+    {
+      "title": "Pro Git (libro oficial)",
+      "url": "https://git-scm.com/book/en/v2"
+    },
+    {
+      "title": "Atlassian: merge vs rebase",
+      "url": "https://www.atlassian.com/git/tutorials/merging-vs-rebasing"
+    },
+    {
+      "title": "Git docs: git-bisect",
+      "url": "https://git-scm.com/docs/git-bisect"
+    },
+    {
+      "title": "Learn Git Branching",
+      "url": "https://learngitbranching.js.org/"
+    }
+  ]
+}

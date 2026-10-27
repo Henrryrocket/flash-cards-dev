@@ -1,0 +1,69 @@
+{
+  "key": "nestjs",
+  "track": "backend",
+  "order": 12,
+  "title": "NestJS",
+  "summary": "Módulos, inyección de dependencias y el ciclo de vida de una petición.",
+  "cards": [
+    {
+      "id": "modules-providers",
+      "level": "beginner",
+      "question": "¿Qué son los módulos, controllers y providers en Nest?",
+      "answer": "Los módulos agrupan funcionalidad relacionada. Los controllers reciben las peticiones y delegan. Los providers (servicios, repositorios) contienen la lógica y se pueden inyectar en otras clases."
+    },
+    {
+      "id": "dependency-injection",
+      "level": "intermediate",
+      "question": "¿Cómo funciona la inyección de dependencias en Nest y qué ventaja tiene?",
+      "answer": "El contenedor lee las dependencias del constructor y las resuelve por token. Por defecto los providers son singleton, con alcance opcional por petición o transitorio. Facilita sustituirlos por dobles en los tests."
+    },
+    {
+      "id": "request-lifecycle",
+      "level": "intermediate",
+      "question": "¿En qué orden se ejecuta el ciclo de vida de una petición?",
+      "answer": "Middleware, guards, interceptors (antes), pipes, handler del controller, interceptors (después) y, si hay un error, exception filters."
+    },
+    {
+      "id": "guards-vs-middleware",
+      "level": "intermediate",
+      "question": "¿Guard o middleware para autorizar?",
+      "answer": "El guard conoce el contexto de ejecución (qué handler y qué metadatos se van a ejecutar) y decide con canActivate, por eso encaja con roles y permisos. El middleware es genérico, estilo Express, y no sabe qué handler vendrá después."
+    },
+    {
+      "id": "validation-pipe-dto",
+      "level": "intermediate",
+      "question": "¿Cómo validas la entrada con DTOs?",
+      "answer": "Con ValidationPipe y clases con decoradores de class-validator. Conviene activar whitelist (elimina propiedades no declaradas, evitando mass assignment) y transform para obtener instancias tipadas."
+    },
+    {
+      "id": "custom-providers",
+      "level": "advanced",
+      "question": "¿Qué son los custom providers y cuándo se usan?",
+      "answer": "Permiten controlar cómo se crea una dependencia: useClass, useValue y useFactory (que puede ser asíncrono e inyectar otros providers). Se usan para configuración, clientes externos o para sustituir implementaciones por tokens de abstracciones."
+    },
+    {
+      "id": "circular-dependencies",
+      "level": "advanced",
+      "question": "¿Qué haces ante una dependencia circular entre módulos o servicios?",
+      "answer": "forwardRef() lo resuelve técnicamente, pero suele indicar un problema de diseño. Es mejor extraer lo compartido a un tercer módulo o servicio, o comunicar mediante eventos para romper el ciclo."
+    }
+  ],
+  "resources": [
+    {
+      "title": "NestJS: Documentation",
+      "url": "https://docs.nestjs.com/"
+    },
+    {
+      "title": "NestJS: Request lifecycle",
+      "url": "https://docs.nestjs.com/faq/request-lifecycle"
+    },
+    {
+      "title": "NestJS: Custom providers",
+      "url": "https://docs.nestjs.com/fundamentals/custom-providers"
+    },
+    {
+      "title": "NestJS: Validation",
+      "url": "https://docs.nestjs.com/techniques/validation"
+    }
+  ]
+}

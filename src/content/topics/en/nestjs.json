@@ -1,0 +1,69 @@
+{
+  "key": "nestjs",
+  "track": "backend",
+  "order": 12,
+  "title": "NestJS",
+  "summary": "Modules, dependency injection and the request lifecycle.",
+  "cards": [
+    {
+      "id": "modules-providers",
+      "level": "beginner",
+      "question": "What are modules, controllers and providers in Nest?",
+      "answer": "Modules group related functionality. Controllers receive requests and delegate. Providers (services, repositories) hold the logic and can be injected into other classes."
+    },
+    {
+      "id": "dependency-injection",
+      "level": "intermediate",
+      "question": "How does dependency injection work in Nest and what is its benefit?",
+      "answer": "The container reads constructor dependencies and resolves them by token. Providers are singletons by default, with optional request or transient scope. It makes swapping them for test doubles easy."
+    },
+    {
+      "id": "request-lifecycle",
+      "level": "intermediate",
+      "question": "In what order does the request lifecycle run?",
+      "answer": "Middleware, guards, interceptors (before), pipes, controller handler, interceptors (after) and, on error, exception filters."
+    },
+    {
+      "id": "guards-vs-middleware",
+      "level": "intermediate",
+      "question": "Guard or middleware for authorization?",
+      "answer": "A guard knows the execution context (which handler and metadata will run) and decides with canActivate, so it fits roles and permissions. Middleware is generic, Express-style, and does not know which handler comes next."
+    },
+    {
+      "id": "validation-pipe-dto",
+      "level": "intermediate",
+      "question": "How do you validate input with DTOs?",
+      "answer": "With ValidationPipe and classes decorated with class-validator. Enable whitelist (strips undeclared properties, preventing mass assignment) and transform to get typed instances."
+    },
+    {
+      "id": "custom-providers",
+      "level": "advanced",
+      "question": "What are custom providers and when do you use them?",
+      "answer": "They control how a dependency is created: useClass, useValue and useFactory (which can be async and inject other providers). Used for configuration, external clients, or binding implementations to abstraction tokens."
+    },
+    {
+      "id": "circular-dependencies",
+      "level": "advanced",
+      "question": "What do you do about a circular dependency between modules or services?",
+      "answer": "forwardRef() solves it technically, but it usually signals a design problem. Better to extract the shared part into a third module or service, or communicate through events to break the cycle."
+    }
+  ],
+  "resources": [
+    {
+      "title": "NestJS: Documentation",
+      "url": "https://docs.nestjs.com/"
+    },
+    {
+      "title": "NestJS: Request lifecycle",
+      "url": "https://docs.nestjs.com/faq/request-lifecycle"
+    },
+    {
+      "title": "NestJS: Custom providers",
+      "url": "https://docs.nestjs.com/fundamentals/custom-providers"
+    },
+    {
+      "title": "NestJS: Validation",
+      "url": "https://docs.nestjs.com/techniques/validation"
+    }
+  ]
+}

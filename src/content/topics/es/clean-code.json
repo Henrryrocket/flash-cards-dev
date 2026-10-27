@@ -1,0 +1,71 @@
+{
+  "key": "clean-code",
+  "track": "backend",
+  "order": 14,
+  "title": "Clean code",
+  "summary": "Código que otras personas pueden leer, cambiar y confiar en él.",
+  "cards": [
+    {
+      "id": "meaningful-names",
+      "level": "beginner",
+      "question": "¿Qué hace bueno a un nombre?",
+      "answer": "Revela la intención: dice qué es o qué hace sin necesidad de un comentario, usa el vocabulario del dominio y evita abreviaturas crípticas. Si un nombre necesita un comentario, probablemente es el nombre equivocado."
+    },
+    {
+      "id": "comments-why",
+      "level": "beginner",
+      "question": "¿Qué se debe comentar?",
+      "answer": "El porqué: una decisión no obvia, una restricción externa o un riesgo. No el qué, que debe leerse en el propio código. Un comentario que repite el código se desactualiza y miente."
+    },
+    {
+      "id": "single-responsibility",
+      "level": "intermediate",
+      "question": "¿Qué significa el principio de responsabilidad única?",
+      "answer": "Un módulo debe tener una sola razón para cambiar, es decir, responder a un solo actor o área del negocio. No significa que haga una sola cosa: significa que cambios de motivos distintos no deberían tocar el mismo código."
+    },
+    {
+      "id": "solid",
+      "level": "intermediate",
+      "question": "¿Qué significa cada letra de SOLID?",
+      "answer": "S: una razón para cambiar. O: abierto a extensión, cerrado a modificación. L: los subtipos deben poder sustituir a su tipo base. I: interfaces pequeñas y específicas. D: depender de abstracciones, no de implementaciones concretas."
+    },
+    {
+      "id": "wrong-abstraction",
+      "level": "intermediate",
+      "question": "¿Siempre hay que aplicar DRY?",
+      "answer": "No. La duplicación es más barata que la abstracción equivocada. Si dos fragmentos se parecen pero cambian por motivos distintos, unificarlos los acopla. Una regla práctica es esperar a la tercera repetición antes de abstraer."
+    },
+    {
+      "id": "small-functions",
+      "level": "intermediate",
+      "question": "¿Cómo debería ser una buena función?",
+      "answer": "Pequeña, con un único nivel de abstracción y con nombre que describe lo que hace. Pocos parámetros, sin argumentos booleanos que cambien su comportamiento, y preferiblemente sin efectos secundarios ocultos."
+    },
+    {
+      "id": "error-handling",
+      "level": "advanced",
+      "question": "¿Cómo manejas los errores con criterio?",
+      "answer": "Falla rápido y con contexto, usa errores de dominio con significado en lugar de códigos mágicos, no tragues excepciones en silencio y maneja el error en la capa que puede hacer algo útil con él. Registra una vez, no en cada capa."
+    },
+    {
+      "id": "dip-vs-di",
+      "level": "advanced",
+      "question": "¿Diferencia entre inversión de dependencias, inyección de dependencias e IoC?",
+      "answer": "DIP es un principio: los módulos de alto nivel dependen de abstracciones. La inyección de dependencias es la técnica para suministrar esas dependencias desde fuera. Un contenedor de IoC es la herramienta que automatiza esa inyección."
+    }
+  ],
+  "resources": [
+    {
+      "title": "Sandi Metz: The Wrong Abstraction",
+      "url": "https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction"
+    },
+    {
+      "title": "Refactoring Guru: Code smells",
+      "url": "https://refactoring.guru/refactoring/smells"
+    },
+    {
+      "title": "Martin Fowler: Beck Design Rules",
+      "url": "https://martinfowler.com/bliki/BeckDesignRules.html"
+    }
+  ]
+}

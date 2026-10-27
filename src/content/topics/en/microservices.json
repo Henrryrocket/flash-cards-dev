@@ -1,0 +1,79 @@
+{
+  "key": "microservices",
+  "track": "backend",
+  "order": 15,
+  "title": "Microservices",
+  "summary": "What you gain, what you pay and the patterns to avoid drowning in complexity.",
+  "cards": [
+    {
+      "id": "what-are-microservices",
+      "level": "beginner",
+      "question": "What is a microservice and when should you NOT use them?",
+      "answer": "A small, independently deployable service organized around a business capability, with its own data. Not worth it with a small team or a still-unclear domain: you pay distributed complexity without needing the scale."
+    },
+    {
+      "id": "service-boundaries",
+      "level": "intermediate",
+      "question": "How do you define boundaries between services?",
+      "answer": "By business capability or bounded context (DDD), not by technical layers. Each service owns its data and no other accesses its database directly. If two services must always change together, the boundary is wrong."
+    },
+    {
+      "id": "sync-vs-async",
+      "level": "intermediate",
+      "question": "Synchronous or asynchronous communication between services?",
+      "answer": "Synchronous (REST, gRPC): simple and gives an immediate answer, but couples availability and propagates cascading failures. Asynchronous (events, queues): decouples and absorbs spikes, at the cost of eventual consistency and harder-to-debug flows."
+    },
+    {
+      "id": "api-gateway",
+      "level": "intermediate",
+      "question": "What is an API gateway for and what risk does it add?",
+      "answer": "The single entry point: it routes, authenticates, applies rate limits and can aggregate responses. The risk is turning it into a bottleneck, a single point of failure or a place where business logic piles up."
+    },
+    {
+      "id": "observability",
+      "level": "intermediate",
+      "question": "How do you debug a request that crosses several services?",
+      "answer": "With distributed tracing: a correlation ID travelling on every call (OpenTelemetry) that lets you rebuild the full path, combined with structured logs and metrics. Without it, production failures are nearly impossible to trace."
+    },
+    {
+      "id": "saga-pattern",
+      "level": "advanced",
+      "question": "How do you keep consistency without distributed transactions?",
+      "answer": "With a saga: a sequence of local transactions, each with a compensating action that undoes it if a later step fails. It can be coordinated by a central orchestrator or choreographed through events."
+    },
+    {
+      "id": "resilience-patterns",
+      "level": "advanced",
+      "question": "Which patterns prevent cascading failures?",
+      "answer": "Timeouts on every call, retries with exponential backoff and jitter (only on idempotent operations), circuit breakers that cut calls to a failing service and bulkheads that isolate resources so one failure cannot consume everything."
+    },
+    {
+      "id": "transactional-outbox",
+      "level": "advanced",
+      "question": "What problem does the transactional outbox pattern solve?",
+      "answer": "The dual write: saving to the database and publishing an event is not atomic, and a failure between them leaves inconsistent data. The event is stored in an outbox table within the same transaction and a separate process publishes it, with at-least-once delivery."
+    }
+  ],
+  "resources": [
+    {
+      "title": "Martin Fowler: Microservices",
+      "url": "https://martinfowler.com/articles/microservices.html"
+    },
+    {
+      "title": "microservices.io: Patterns",
+      "url": "https://microservices.io/patterns/"
+    },
+    {
+      "title": "microservices.io: Saga",
+      "url": "https://microservices.io/patterns/data/saga.html"
+    },
+    {
+      "title": "microservices.io: Transactional outbox",
+      "url": "https://microservices.io/patterns/data/transactional-outbox.html"
+    },
+    {
+      "title": "OpenTelemetry: Observability primer",
+      "url": "https://opentelemetry.io/docs/concepts/observability-primer/"
+    }
+  ]
+}

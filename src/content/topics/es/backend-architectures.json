@@ -1,0 +1,73 @@
+{
+  "key": "backend-architectures",
+  "track": "backend",
+  "order": 13,
+  "title": "Arquitecturas backend",
+  "summary": "Cómo organizar el código para que el dominio sobreviva a los frameworks.",
+  "cards": [
+    {
+      "id": "layered-architecture",
+      "level": "beginner",
+      "question": "¿Qué es una arquitectura en capas y qué riesgo tiene?",
+      "answer": "Presentación, lógica de negocio y acceso a datos, con dependencias hacia abajo. Es simple y conocida; el riesgo es que la lógica acabe acoplada a la base de datos y que el dominio quede reducido a estructuras de datos sin comportamiento."
+    },
+    {
+      "id": "hexagonal",
+      "level": "intermediate",
+      "question": "¿Qué es la arquitectura hexagonal (puertos y adaptadores)?",
+      "answer": "El dominio está en el centro y define puertos (interfaces) para lo que necesita del exterior. Los adaptadores (HTTP, base de datos, colas) los implementan. Así se puede cambiar la infraestructura y probar el dominio sin ella."
+    },
+    {
+      "id": "dependency-rule",
+      "level": "intermediate",
+      "question": "¿Qué dice la regla de dependencia de Clean Architecture?",
+      "answer": "Las dependencias del código fuente solo apuntan hacia adentro: frameworks y detalles dependen de casos de uso y entidades, nunca al revés. Se consigue con inversión de dependencias: el interior define la interfaz y el exterior la implementa."
+    },
+    {
+      "id": "modular-monolith",
+      "level": "intermediate",
+      "question": "¿Qué es un monolito modular y por qué suele ser un buen punto de partida?",
+      "answer": "Una sola unidad de despliegue con módulos de límites estrictos que solo se comunican por interfaces públicas. Da la mayor parte de la claridad de los microservicios sin su complejidad operativa, y permite extraer un módulo después si hace falta."
+    },
+    {
+      "id": "ddd-aggregates",
+      "level": "advanced",
+      "question": "¿Qué es un agregado en DDD?",
+      "answer": "Un grupo de entidades y objetos de valor tratados como una unidad de consistencia, con una raíz de agregado como única puerta de entrada. Se garantiza que sus invariantes se cumplan dentro de una transacción; entre agregados se acepta consistencia eventual."
+    },
+    {
+      "id": "cqrs",
+      "level": "advanced",
+      "question": "¿Qué es CQRS y cuándo no conviene?",
+      "answer": "Separar el modelo de escritura (comandos) del de lectura (consultas), cada uno optimizado a lo suyo y a veces con almacenes distintos. Añade complejidad y consistencia eventual, así que no conviene en CRUD simples."
+    },
+    {
+      "id": "event-sourcing",
+      "level": "advanced",
+      "question": "¿Qué es event sourcing y qué cuesta?",
+      "answer": "En lugar de guardar el estado actual se guarda la secuencia de eventos que lo produjo; el estado se obtiene reproduciéndolos. Da auditoría completa y viajes en el tiempo. Cuesta evolución del esquema de eventos, proyecciones para consultar y una curva de aprendizaje alta."
+    }
+  ],
+  "resources": [
+    {
+      "title": "Alistair Cockburn: Hexagonal Architecture",
+      "url": "https://alistair.cockburn.us/hexagonal-architecture/"
+    },
+    {
+      "title": "Uncle Bob: The Clean Architecture",
+      "url": "https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html"
+    },
+    {
+      "title": "Martin Fowler: Monolith First",
+      "url": "https://martinfowler.com/bliki/MonolithFirst.html"
+    },
+    {
+      "title": "Martin Fowler: CQRS",
+      "url": "https://martinfowler.com/bliki/CQRS.html"
+    },
+    {
+      "title": "Martin Fowler: Event Sourcing",
+      "url": "https://martinfowler.com/eaaDev/EventSourcing.html"
+    }
+  ]
+}

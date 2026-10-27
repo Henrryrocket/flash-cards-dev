@@ -1,0 +1,63 @@
+{
+  "key": "docker",
+  "track": "backend",
+  "order": 9,
+  "title": "Docker",
+  "summary": "Imágenes, contenedores y cómo construirlos de forma segura.",
+  "cards": [
+    {
+      "id": "image-vs-container",
+      "level": "beginner",
+      "question": "¿Diferencia entre imagen y contenedor?",
+      "answer": "La imagen es una plantilla inmutable de solo lectura formada por capas. El contenedor es una instancia en ejecución de una imagen, con una capa de escritura efímera encima."
+    },
+    {
+      "id": "volumes-vs-bind-mounts",
+      "level": "intermediate",
+      "question": "¿Cuándo usar volúmenes y cuándo bind mounts?",
+      "answer": "El sistema de archivos del contenedor es efímero. Los volúmenes los gestiona Docker y son la opción para persistir datos (por ejemplo, la base de datos). Los bind mounts enlazan una ruta del host y se usan en desarrollo para ver los cambios del código al instante."
+    },
+    {
+      "id": "layer-caching",
+      "level": "intermediate",
+      "question": "¿Por qué importa el orden de las instrucciones en un Dockerfile?",
+      "answer": "Cada instrucción crea una capa que se cachea; si una cambia, se invalidan todas las siguientes. Se ordena de lo que menos cambia a lo que más: primero copiar package.json e instalar dependencias, después copiar el código."
+    },
+    {
+      "id": "multi-stage-builds",
+      "level": "intermediate",
+      "question": "¿Qué es un multi-stage build y qué aporta?",
+      "answer": "Usas una etapa con todas las herramientas para compilar y copias solo el resultado a una imagen final mínima. La imagen es más pequeña, se descarga antes y expone menos superficie de ataque."
+    },
+    {
+      "id": "container-security",
+      "level": "advanced",
+      "question": "¿Qué medidas de seguridad aplicas a una imagen de producción?",
+      "answer": "Usuario no root, imagen base mínima y fijada por versión o digest, ningún secreto dentro de las capas (se inyectan en ejecución), escaneo de vulnerabilidades, sistema de archivos de solo lectura y capacidades de Linux reducidas."
+    },
+    {
+      "id": "pid1-signals",
+      "level": "advanced",
+      "question": "¿Por qué un contenedor Node.js puede tardar en detenerse con docker stop?",
+      "answer": "El proceso principal es PID 1, que no recibe el manejo de señales por defecto: SIGTERM puede ignorarse y Docker acaba enviando SIGKILL tras el plazo. Se usa la forma exec de CMD, un init como tini (docker run --init) y un manejador de SIGTERM en la app."
+    }
+  ],
+  "resources": [
+    {
+      "title": "Docker: Building best practices",
+      "url": "https://docs.docker.com/build/building/best-practices/"
+    },
+    {
+      "title": "Docker: Multi-stage builds",
+      "url": "https://docs.docker.com/build/building/multi-stage/"
+    },
+    {
+      "title": "OWASP: Docker Security Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Docker_Security_Cheat_Sheet.html"
+    },
+    {
+      "title": "Docker: Volumes",
+      "url": "https://docs.docker.com/engine/storage/volumes/"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "key": "clean-code",
+  "track": "backend",
+  "order": 14,
+  "title": "Clean code",
+  "summary": "Code other people can read, change and trust.",
+  "cards": [
+    {
+      "id": "meaningful-names",
+      "level": "beginner",
+      "question": "What makes a good name?",
+      "answer": "It reveals intent: says what something is or does without needing a comment, uses domain vocabulary and avoids cryptic abbreviations. If a name needs a comment, it is probably the wrong name."
+    },
+    {
+      "id": "comments-why",
+      "level": "beginner",
+      "question": "What should you comment?",
+      "answer": "The why: a non-obvious decision, an external constraint or a risk. Not the what, which the code itself should convey. A comment that repeats the code goes stale and lies."
+    },
+    {
+      "id": "single-responsibility",
+      "level": "intermediate",
+      "question": "What does the single responsibility principle mean?",
+      "answer": "A module should have one reason to change, i.e. answer to one actor or business area. It does not mean it does only one thing: it means changes for different reasons should not touch the same code."
+    },
+    {
+      "id": "solid",
+      "level": "intermediate",
+      "question": "What does each letter of SOLID stand for?",
+      "answer": "S: one reason to change. O: open for extension, closed for modification. L: subtypes must be substitutable for their base type. I: small, specific interfaces. D: depend on abstractions, not concrete implementations."
+    },
+    {
+      "id": "wrong-abstraction",
+      "level": "intermediate",
+      "question": "Should you always apply DRY?",
+      "answer": "No. Duplication is cheaper than the wrong abstraction. If two snippets look alike but change for different reasons, merging them couples them. A practical rule is to wait for the third repetition before abstracting."
+    },
+    {
+      "id": "small-functions",
+      "level": "intermediate",
+      "question": "What should a good function look like?",
+      "answer": "Small, one level of abstraction and a name describing what it does. Few parameters, no boolean flags that change its behavior, and preferably no hidden side effects."
+    },
+    {
+      "id": "error-handling",
+      "level": "advanced",
+      "question": "How do you handle errors well?",
+      "answer": "Fail fast with context, use meaningful domain errors instead of magic codes, never swallow exceptions silently and handle the error in the layer that can do something useful with it. Log once, not in every layer."
+    },
+    {
+      "id": "dip-vs-di",
+      "level": "advanced",
+      "question": "What is the difference between dependency inversion, dependency injection and IoC?",
+      "answer": "DIP is a principle: high-level modules depend on abstractions. Dependency injection is the technique of supplying those dependencies from outside. An IoC container is the tool that automates that injection."
+    }
+  ],
+  "resources": [
+    {
+      "title": "Sandi Metz: The Wrong Abstraction",
+      "url": "https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction"
+    },
+    {
+      "title": "Refactoring Guru: Code smells",
+      "url": "https://refactoring.guru/refactoring/smells"
+    },
+    {
+      "title": "Martin Fowler: Beck Design Rules",
+      "url": "https://martinfowler.com/bliki/BeckDesignRules.html"
+    }
+  ]
+}

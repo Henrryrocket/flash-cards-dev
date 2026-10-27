@@ -1,0 +1,69 @@
+{
+  "key": "typescript",
+  "track": "backend",
+  "order": 10,
+  "title": "TypeScript",
+  "summary": "El sistema de tipos: qué garantiza y dónde termina su protección.",
+  "cards": [
+    {
+      "id": "any-vs-unknown",
+      "level": "beginner",
+      "question": "¿Diferencia entre any y unknown?",
+      "answer": "any desactiva la comprobación de tipos. unknown acepta cualquier valor pero obliga a comprobar o estrechar el tipo antes de usarlo, por eso es la alternativa segura."
+    },
+    {
+      "id": "utility-types",
+      "level": "beginner",
+      "question": "¿Qué son los utility types? Da ejemplos.",
+      "answer": "Tipos genéricos incluidos en el lenguaje para transformar otros: Partial<T> (todo opcional), Pick<T, K> y Omit<T, K> (seleccionar o excluir propiedades), Record<K, V> y ReturnType<F>."
+    },
+    {
+      "id": "interface-vs-type",
+      "level": "intermediate",
+      "question": "¿interface o type?",
+      "answer": "Se solapan mucho. Solo interface admite declaration merging y extends natural entre objetos; solo type puede expresar uniones, tipos mapeados y condicionales. Lo importante es ser consistente en el proyecto."
+    },
+    {
+      "id": "structural-typing",
+      "level": "intermediate",
+      "question": "¿Qué significa que TypeScript tenga tipado estructural?",
+      "answer": "La compatibilidad depende de la forma del valor, no del nombre del tipo: si un objeto tiene las propiedades requeridas, es asignable aunque no declare implementar la interfaz."
+    },
+    {
+      "id": "generics",
+      "level": "intermediate",
+      "question": "¿Para qué sirven los genéricos y las restricciones?",
+      "answer": "Permiten escribir código reutilizable que conserva la relación entre tipos de entrada y salida, en lugar de perderla con any. Con extends se restringe qué tipos son válidos: <T extends { id: string }>."
+    },
+    {
+      "id": "discriminated-unions",
+      "level": "advanced",
+      "question": "¿Qué es una unión discriminada y cómo se comprueba que es exhaustiva?",
+      "answer": "Una unión de tipos con una propiedad literal común (por ejemplo kind) que permite estrechar el tipo en un switch. Para garantizar exhaustividad se asigna el caso por defecto a never: si añades una variante y olvidas tratarla, falla la compilación."
+    },
+    {
+      "id": "runtime-validation",
+      "level": "advanced",
+      "question": "Si uso TypeScript, ¿por qué debo validar la entrada de una API?",
+      "answer": "Los tipos se borran al compilar: no existen en ejecución, y un JSON externo puede traer cualquier forma. Hay que validar en la frontera con una librería como Zod y derivar el tipo del esquema, para que tipo y validación no diverjan."
+    }
+  ],
+  "resources": [
+    {
+      "title": "TypeScript Handbook",
+      "url": "https://www.typescriptlang.org/docs/handbook/intro.html"
+    },
+    {
+      "title": "TypeScript: Narrowing",
+      "url": "https://www.typescriptlang.org/docs/handbook/2/narrowing.html"
+    },
+    {
+      "title": "TypeScript: Utility Types",
+      "url": "https://www.typescriptlang.org/docs/handbook/utility-types.html"
+    },
+    {
+      "title": "Zod",
+      "url": "https://zod.dev/"
+    }
+  ]
+}

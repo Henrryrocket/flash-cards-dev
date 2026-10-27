@@ -1,0 +1,69 @@
+{
+  "key": "orms",
+  "track": "backend",
+  "order": 11,
+  "title": "ORMs and Prisma",
+  "summary": "Mapping tables to objects without losing control of your queries.",
+  "cards": [
+    {
+      "id": "what-is-orm",
+      "level": "beginner",
+      "question": "What is an ORM and what are its trade-offs?",
+      "answer": "A layer that maps tables to objects and generates SQL for you. It brings productivity and type safety; in exchange it hides the real queries, can generate inefficient SQL and the abstraction leaks in complex cases."
+    },
+    {
+      "id": "n-plus-one",
+      "level": "intermediate",
+      "question": "What is the N+1 problem and how do you avoid it?",
+      "answer": "One query to list N rows plus N extra queries to load their relations one by one. Avoid it by loading relations in bulk (include/select in Prisma, joins or batching) and inspecting query logs."
+    },
+    {
+      "id": "prisma-migrations",
+      "level": "intermediate",
+      "question": "When do you use prisma migrate dev, migrate deploy and db push?",
+      "answer": "migrate dev generates and applies migrations in development. migrate deploy only applies pending ones and is the command for CI and production. db push syncs the schema without migration history: fine for prototyping, not for production."
+    },
+    {
+      "id": "prisma-transactions",
+      "level": "intermediate",
+      "question": "How do you make several writes atomic in Prisma?",
+      "answer": "With prisma.$transaction: the array form runs several operations together, and the interactive form ($transaction(async tx => ...)) allows logic in between. Keep them short so they do not hold connections or locks."
+    },
+    {
+      "id": "raw-sql-injection",
+      "level": "advanced",
+      "question": "How do you use raw SQL in Prisma without opening an SQL injection?",
+      "answer": "With $queryRaw as a tagged template: interpolated values are sent as parameters. Never concatenate strings to build the query or pass user input to $queryRawUnsafe."
+    },
+    {
+      "id": "prisma-connections",
+      "level": "advanced",
+      "question": "Which connection problems appear with Prisma in serverless or in development?",
+      "answer": "Each instance or hot reload can create another PrismaClient with its own pool and exhaust database connections. Use a single shared client and, in serverless, an external pooler (PgBouncer or a pooling service)."
+    },
+    {
+      "id": "orm-vs-query-builder",
+      "level": "advanced",
+      "question": "ORM or query builder?",
+      "answer": "A query builder (Kysely, Knex) stays closer to SQL: full control and predictable queries, with less abstraction. An ORM offers more productivity for CRUD and relations. Many teams use the ORM for the common cases and explicit SQL for critical queries."
+    }
+  ],
+  "resources": [
+    {
+      "title": "Prisma: Relation queries",
+      "url": "https://www.prisma.io/docs/orm/prisma-client/queries/relation-queries"
+    },
+    {
+      "title": "Prisma: Migrate",
+      "url": "https://www.prisma.io/docs/orm/prisma-migrate"
+    },
+    {
+      "title": "Prisma: Transactions",
+      "url": "https://www.prisma.io/docs/orm/prisma-client/queries/transactions"
+    },
+    {
+      "title": "Prisma: Raw queries",
+      "url": "https://www.prisma.io/docs/orm/prisma-client/using-raw-sql/raw-queries"
+    }
+  ]
+}

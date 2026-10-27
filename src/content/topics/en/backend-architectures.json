@@ -1,0 +1,73 @@
+{
+  "key": "backend-architectures",
+  "track": "backend",
+  "order": 13,
+  "title": "Backend architectures",
+  "summary": "How to organize code so the domain outlives the frameworks.",
+  "cards": [
+    {
+      "id": "layered-architecture",
+      "level": "beginner",
+      "question": "What is a layered architecture and what is its risk?",
+      "answer": "Presentation, business logic and data access, with dependencies pointing downward. It is simple and familiar; the risk is logic ending up coupled to the database and the domain reduced to behaviorless data structures."
+    },
+    {
+      "id": "hexagonal",
+      "level": "intermediate",
+      "question": "What is hexagonal architecture (ports and adapters)?",
+      "answer": "The domain sits at the center and defines ports (interfaces) for what it needs from outside. Adapters (HTTP, database, queues) implement them. You can swap infrastructure and test the domain without it."
+    },
+    {
+      "id": "dependency-rule",
+      "level": "intermediate",
+      "question": "What does the Clean Architecture dependency rule say?",
+      "answer": "Source code dependencies only point inward: frameworks and details depend on use cases and entities, never the reverse. Achieved through dependency inversion: the inner layer defines the interface and the outer one implements it."
+    },
+    {
+      "id": "modular-monolith",
+      "level": "intermediate",
+      "question": "What is a modular monolith and why is it often a good starting point?",
+      "answer": "A single deployable with modules that have strict boundaries and talk only through public interfaces. It gives most of the clarity of microservices without their operational complexity, and lets you extract a module later if needed."
+    },
+    {
+      "id": "ddd-aggregates",
+      "level": "advanced",
+      "question": "What is an aggregate in DDD?",
+      "answer": "A group of entities and value objects treated as a consistency unit, with an aggregate root as the only entry point. Its invariants are guaranteed within one transaction; between aggregates eventual consistency is accepted."
+    },
+    {
+      "id": "cqrs",
+      "level": "advanced",
+      "question": "What is CQRS and when is it not worth it?",
+      "answer": "Separating the write model (commands) from the read model (queries), each optimized for its job and sometimes using different stores. It adds complexity and eventual consistency, so it is not worth it for simple CRUD."
+    },
+    {
+      "id": "event-sourcing",
+      "level": "advanced",
+      "question": "What is event sourcing and what does it cost?",
+      "answer": "Instead of storing current state you store the sequence of events that produced it; state is derived by replaying them. It gives full audit and time travel. It costs event schema evolution, projections for querying and a steep learning curve."
+    }
+  ],
+  "resources": [
+    {
+      "title": "Alistair Cockburn: Hexagonal Architecture",
+      "url": "https://alistair.cockburn.us/hexagonal-architecture/"
+    },
+    {
+      "title": "Uncle Bob: The Clean Architecture",
+      "url": "https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html"
+    },
+    {
+      "title": "Martin Fowler: Monolith First",
+      "url": "https://martinfowler.com/bliki/MonolithFirst.html"
+    },
+    {
+      "title": "Martin Fowler: CQRS",
+      "url": "https://martinfowler.com/bliki/CQRS.html"
+    },
+    {
+      "title": "Martin Fowler: Event Sourcing",
+      "url": "https://martinfowler.com/eaaDev/EventSourcing.html"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+
+// The 404 page is served for any unknown URL, so it cannot know the visitor's
+// language: show both and let them pick.
+const copy = [
+  { lang: 'en', title: 'Page not found', text: 'This page does not exist or was moved.', cta: 'Back to the home page', href: '/en/' },
+  { lang: 'es', title: 'Página no encontrada', text: 'Esta página no existe o fue movida.', cta: 'Volver al inicio', href: '/es/' },
+] as const;
+---
+<Base lang="en" title="404 · Senior Flashcards" hrefs={{ en: '/en/', es: '/es/' }}>
+  <section class="relative isolate overflow-hidden">
+    <div class="hero-bg absolute inset-0 -z-10" aria-hidden="true"></div>
+    <div class="mx-auto w-full max-w-3xl px-5 py-24 text-center sm:px-8 sm:py-32">
+      <p class="text-gradient text-8xl font-extrabold tracking-tight sm:text-9xl">404</p>
+      <div class="mt-10 grid gap-5 text-left sm:grid-cols-2">
+        {copy.map((c) => (
+          <div lang={c.lang} class="rounded-2xl border border-line bg-surface p-6">
+            <h1 class="text-xl font-semibold tracking-tight">{c.title}</h1>
+            <p class="mt-2 text-mute">{c.text}</p>
+            <a href={c.href} class="mt-5 inline-flex items-center rounded-xl bg-brand px-5 py-2.5 text-sm font-semibold text-on-brand transition hover:opacity-90">{c.cta} →</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,43 +1,16 @@
-# Astro Starter Kit: Minimal
+# Senior Flashcards
 
-```sh
-pnpm create astro@latest -- --template minimal
+Bilingual (ES/EN) flash-cards with interactive diagrams to prepare for senior
+backend interviews. Astro + React islands + Tailwind, fully static.
+
+```bash
+pnpm install
+pnpm dev        # local dev server
+pnpm test       # vitest
+pnpm check      # astro check (types)
+pnpm build      # static output in dist/
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- Content lives in `src/content/topics/{es,en}` and `src/content/diagrams/{es,en}`
+  (validated by the schema in `src/content.config.ts`).
+- Deployment: see [docs/DEPLOY.md](docs/DEPLOY.md).

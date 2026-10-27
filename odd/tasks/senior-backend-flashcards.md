@@ -20,8 +20,8 @@ S11. Decision (user): content bilingual ES/EN from day 1, language selector.
 - T2 (S1,S3) Flash-card component (flip, level filter, progress in localStorage) — inline — done (8 vitest tests green, astro check clean, flip/mark/persist verified in browser; not committed)
 - T3 (S10) Security: CSP, headers (_headers), no user-input sinks, dependency audit — inline — done (CSP via Astro security.csp + public/_headers; 15 tests, check clean, pnpm audit clean, hydration verified under CSP; not committed)
 - T4 (S6) Diagram engine (step-player over SVG) + MVC flow diagram — inline — done (22 tests, check clean, 7 pages; step-player verified in browser under CSP: next/play/reset; not committed)
-- T5 (S5,S7,S8) Content pass 1: HTTP, JWT, SQL/Postgres, Node, System design (research-backed) — pending
-- T6 (S9) Deploy config Cloudflare Pages + CI — pending
+- T5 (S5,S7,S8) Content pass 1: HTTP, JWT, SQL/Postgres, Node, System design (research-backed) — done pass 1 (HTTP, JWT, SQL, PostgreSQL, Node.js, System design + MVC = 7 topics, 38 cards ES/EN; 22 resource URLs return 200; 38 tests; 17 pages; not committed). Still open: Git, Docker, TS, ORMs/Prisma, Nest, architectures, clean code, microservices
+- T6 (S9) Deploy config Cloudflare Pages + CI — config done: CI workflow + Dependabot + docs/DEPLOY.md; CI steps replayed locally from clean install (all green); NOT verified on GitHub Actions; Cloudflare project not created (needs user account); not committed
 
 ## Log
 L1 (2026-10-26): "Quiero construir y desplegar una aplicación web que permita ayudar a entender los fundamentos y conceptos básicos de programación, tanto en el backend como en el frontend, mediante el uso de fash-cards y ayudas visuales como diagramas." (full request in session)

@@ -1,18 +1,24 @@
-# Deploying to Cloudflare Pages
+# Deploying to Cloudflare
 
 The site is fully static (`dist/`), so there is no server to run or secure.
 
-## Recommended: Git integration (no secrets in the repo)
+## Recommended: Cloudflare Git integration (no secrets in the repo)
 
-1. Cloudflare dashboard → Workers & Pages → Create → Pages → Connect to Git.
+Cloudflare now creates new projects as Workers with static assets. The repo ships
+`wrangler.jsonc`, which tells Wrangler to serve `dist/` as static assets, so the
+deploy step never needs an adapter or a server.
+
+1. Cloudflare dashboard → Workers & Pages → Create → Import a repository.
 2. Select `Henrryrocket/flash-cards-dev`, production branch `main`.
 3. Build settings:
-   - Framework preset: Astro
    - Build command: `pnpm build`
-   - Build output directory: `dist`
-4. Environment variable (only if the build uses the wrong Node): `NODE_VERSION=24`.
-   The repo also ships `.node-version`.
-5. Save and deploy. Pull requests get preview deployments automatically.
+   - Deploy command: `npx wrangler deploy`
+   - The Worker name must match `name` in `wrangler.jsonc` (`flash-cards-dev`).
+4. The repo ships `.node-version` (Node 24). Only set `NODE_VERSION` if the build uses the wrong Node.
+5. Save and deploy. Branches get preview URLs automatically.
+
+Without `wrangler.jsonc`, `wrangler deploy` tries to auto-configure the project
+with `astro add cloudflare` (an SSR adapter) and fails under pnpm. Do not remove it.
 
 `public/_headers` is copied to `dist/_headers` and applied by Cloudflare (HSTS,
 frame-ancestors, COOP, Permissions-Policy, immutable cache for `/_astro/*`).

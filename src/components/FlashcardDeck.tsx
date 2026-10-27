@@ -55,10 +55,8 @@ export default function FlashcardDeck({ topic, cards, labels }: Props) {
         ))}
       </div>
 
-      <div className="mt-4 h-1.5 overflow-hidden rounded bg-zinc-800" role="progressbar"
-        aria-valuemin={0} aria-valuemax={total} aria-valuenow={known}>
-        <div className="h-full bg-emerald-400 transition-all" style={{ width: total ? `${(known / total) * 100}%` : '0%' }} />
-      </div>
+      <progress value={known} max={Math.max(total, 1)} aria-label={labels.mastered}
+        className="mt-4 block h-1.5 w-full overflow-hidden rounded bg-zinc-800 [&::-moz-progress-bar]:bg-emerald-400 [&::-webkit-progress-bar]:bg-zinc-800 [&::-webkit-progress-value]:bg-emerald-400" />
       <p className="mt-1 text-xs text-zinc-500">{known}/{total} {labels.mastered}</p>
 
       {!card ? (

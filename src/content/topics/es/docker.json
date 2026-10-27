@@ -1,9 +1,10 @@
 {
   "key": "docker",
   "track": "backend",
-  "order": 9,
+  "order": 8,
   "title": "Docker",
   "summary": "Imágenes, contenedores y cómo construirlos de forma segura.",
+  "why": "Los Dockerfile generados por IA funcionan, pero a menudo corren como root, con secretos dentro de las capas e imágenes enormes. Entender capas y aislamiento es lo que los hace seguros para publicar.",
   "cards": [
     {
       "id": "image-vs-container",

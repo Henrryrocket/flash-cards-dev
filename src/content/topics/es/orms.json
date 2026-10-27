@@ -1,9 +1,10 @@
 {
   "key": "orms",
   "track": "backend",
-  "order": 11,
+  "order": 7,
   "title": "ORMs y Prisma",
   "summary": "Mapear tablas a objetos sin perder el control de las consultas.",
+  "why": "Un ORM oculta el SQL, no sus consecuencias. Las consultas N+1 y el SQL crudo inseguro son errores clásicos del código generado, y solo los fundamentos te permiten verlos.",
   "cards": [
     {
       "id": "what-is-orm",

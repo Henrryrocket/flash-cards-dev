@@ -1,9 +1,10 @@
 {
   "key": "postgres",
   "track": "backend",
-  "order": 5,
+  "order": 6,
   "title": "PostgreSQL",
   "summary": "Cómo funciona por dentro y cómo operarlo con criterio.",
+  "why": "Las bases de datos en producción fallan de formas que ningún prompt anticipa: bloat, bloqueos, conexiones agotadas. Saber cómo funciona Postgres por dentro te permite diagnosticar en vez de adivinar.",
   "cards": [
     {
       "id": "acid",

@@ -1,9 +1,10 @@
 {
   "key": "system-design",
   "track": "backend",
-  "order": 7,
+  "order": 15,
   "title": "System design",
   "summary": "Trade-offs, scale and failure modes: the core of a senior interview.",
+  "why": "AI can sketch a diagram in seconds; it cannot own the trade-offs. Seniority is explaining why this design, what breaks at scale and what you gave up.",
   "cards": [
     {
       "id": "vertical-vs-horizontal",

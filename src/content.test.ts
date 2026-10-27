@@ -26,6 +26,11 @@ describe('topic content parity (es/en)', () => {
     expect(levels).toEqual(new Set(['beginner', 'intermediate', 'advanced']));
   });
 
+  it.each(files)('%s: explains why the topic matters', (file) => {
+    expect(read('es', file).why.length).toBeGreaterThan(40);
+    expect(read('en', file).why.length).toBeGreaterThan(40);
+  });
+
   it('has unique topic orders', () => {
     const orders = files.map((f) => read('es', f).order);
     expect(new Set(orders).size).toBe(orders.length);

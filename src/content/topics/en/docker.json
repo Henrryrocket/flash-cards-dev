@@ -1,9 +1,10 @@
 {
   "key": "docker",
   "track": "backend",
-  "order": 9,
+  "order": 8,
   "title": "Docker",
   "summary": "Images, containers and how to build them securely.",
+  "why": "AI-generated Dockerfiles run, but often as root, with secrets baked into layers and huge images. Understanding layers and isolation is what makes them safe to ship.",
   "cards": [
     {
       "id": "image-vs-container",

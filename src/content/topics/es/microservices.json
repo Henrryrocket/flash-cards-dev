@@ -1,9 +1,10 @@
 {
   "key": "microservices",
   "track": "backend",
-  "order": 15,
+  "order": 14,
   "title": "Microservicios",
   "summary": "Qué ganas, qué pagas y los patrones para no ahogarte en la complejidad.",
+  "why": "Es fácil pedirle diez servicios a una IA y difícil operarlos. Conocer los trade-offs (consistencia, fallos, observabilidad) te dice cuándo no hacerlo.",
   "cards": [
     {
       "id": "what-are-microservices",

@@ -1,9 +1,10 @@
 {
   "key": "postgres",
   "track": "backend",
-  "order": 5,
+  "order": 6,
   "title": "PostgreSQL",
   "summary": "How it works under the hood and how to run it well.",
+  "why": "Production databases fail in ways no prompt anticipates: bloat, locks, exhausted connections. Knowing how Postgres works inside lets you diagnose instead of guess.",
   "cards": [
     {
       "id": "acid",

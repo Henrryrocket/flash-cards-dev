@@ -1,9 +1,10 @@
 {
   "key": "microservices",
   "track": "backend",
-  "order": 15,
+  "order": 14,
   "title": "Microservices",
   "summary": "What you gain, what you pay and the patterns to avoid drowning in complexity.",
+  "why": "It is easy to ask an AI for ten services and hard to operate them. Knowing the trade-offs (consistency, failure, observability) tells you when not to.",
   "cards": [
     {
       "id": "what-are-microservices",

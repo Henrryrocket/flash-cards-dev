@@ -1,9 +1,10 @@
 {
   "key": "git",
   "track": "backend",
-  "order": 8,
+  "order": 1,
   "title": "Git",
   "summary": "History, branches and how to recover from mistakes.",
+  "why": "AI assistants will happily rewrite your history. Knowing what a rebase or a reset really does is what lets you review, undo and trust those changes.",
   "cards": [
     {
       "id": "fetch-vs-pull",

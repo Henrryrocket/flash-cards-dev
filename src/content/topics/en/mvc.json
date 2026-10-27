@@ -1,9 +1,10 @@
 {
   "key": "mvc",
   "track": "backend",
-  "order": 2,
+  "order": 10,
   "title": "MVC",
   "summary": "Separating presentation, coordination and domain.",
+  "why": "Frameworks scaffold MVC for you, but not the discipline. Knowing what belongs in each layer keeps AI-generated code from piling logic into controllers.",
   "diagram": "mvc",
   "cards": [
     {

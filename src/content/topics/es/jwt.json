@@ -1,9 +1,10 @@
 {
   "key": "jwt",
   "track": "backend",
-  "order": 3,
+  "order": 9,
   "title": "JWT y autenticación",
   "summary": "Tokens firmados: qué garantizan, qué no, y cómo usarlos sin sorpresas.",
+  "why": "El código de autenticación de una IA suele verse bien y estar silenciosamente roto: confiar en el algoritmo que declara el token, guardarlo donde un XSS puede leerlo. Conocer el modelo es la única defensa.",
   "cards": [
     {
       "id": "jwt-structure",

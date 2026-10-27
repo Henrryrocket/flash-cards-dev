@@ -1,9 +1,10 @@
 {
   "key": "git",
   "track": "backend",
-  "order": 8,
+  "order": 1,
   "title": "Git",
   "summary": "Historial, ramas y cómo recuperarte de errores.",
+  "why": "Los asistentes de IA reescriben tu historial sin dudar. Saber qué hacen realmente un rebase o un reset es lo que te permite revisar, deshacer y confiar en esos cambios.",
   "cards": [
     {
       "id": "fetch-vs-pull",

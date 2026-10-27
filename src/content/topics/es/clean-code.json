@@ -1,9 +1,10 @@
 {
   "key": "clean-code",
   "track": "backend",
-  "order": 14,
+  "order": 12,
   "title": "Clean code",
   "summary": "Código que otras personas pueden leer, cambiar y confiar en él.",
+  "why": "La IA produce código más rápido de lo que nadie puede leerlo. La legibilidad, los buenos nombres y las abstracciones sensatas evitan que esa velocidad termine en software imposible de mantener.",
   "cards": [
     {
       "id": "meaningful-names",

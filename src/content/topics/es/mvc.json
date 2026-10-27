@@ -1,9 +1,10 @@
 {
   "key": "mvc",
   "track": "backend",
-  "order": 2,
+  "order": 10,
   "title": "MVC",
   "summary": "Separar presentación, coordinación y dominio.",
+  "why": "Los frameworks generan MVC por ti, pero no la disciplina. Saber qué pertenece a cada capa evita que el código generado acumule lógica en los controllers.",
   "diagram": "mvc",
   "cards": [
     {

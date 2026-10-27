@@ -1,9 +1,10 @@
 {
   "key": "nestjs",
   "track": "backend",
-  "order": 12,
+  "order": 11,
   "title": "NestJS",
   "summary": "Módulos, inyección de dependencias y el ciclo de vida de una petición.",
+  "why": "Nest genera mucha estructura rápido. Entender la DI, los módulos y el ciclo de vida te dice por qué algo funciona, o no, en lugar de copiar y pegar hasta que ande.",
   "cards": [
     {
       "id": "modules-providers",

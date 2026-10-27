@@ -1,9 +1,10 @@
 {
   "key": "system-design",
   "track": "backend",
-  "order": 7,
+  "order": 15,
   "title": "System design",
   "summary": "Trade-offs, escala y modos de falla: el núcleo de una entrevista senior.",
+  "why": "La IA dibuja un diagrama en segundos, pero no puede asumir los trade-offs. La seniority es explicar por qué este diseño, qué se rompe a escala y a qué renunciaste.",
   "cards": [
     {
       "id": "vertical-vs-horizontal",

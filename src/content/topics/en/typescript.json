@@ -1,9 +1,10 @@
 {
   "key": "typescript",
   "track": "backend",
-  "order": 10,
+  "order": 3,
   "title": "TypeScript",
   "summary": "The type system: what it guarantees and where its protection ends.",
+  "why": "Generated code compiles and still lies: types vanish at runtime. Understanding what the compiler guarantees, and what it does not, is how you catch the bugs AI leaves behind.",
   "cards": [
     {
       "id": "any-vs-unknown",

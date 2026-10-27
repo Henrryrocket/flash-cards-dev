@@ -1,9 +1,10 @@
 {
   "key": "sql",
   "track": "backend",
-  "order": 4,
+  "order": 5,
   "title": "SQL",
   "summary": "Consultas, índices y transacciones: lo que se pregunta en toda entrevista.",
+  "why": "Los ORM y la IA escriben consultas que nunca lees. Conocer joins, índices y niveles de aislamiento es lo que te hace notar la que recorre un millón de filas o pierde una actualización.",
   "cards": [
     {
       "id": "inner-vs-left-join",

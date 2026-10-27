@@ -1,9 +1,10 @@
 {
   "key": "orms",
   "track": "backend",
-  "order": 11,
+  "order": 7,
   "title": "ORMs and Prisma",
   "summary": "Mapping tables to objects without losing control of your queries.",
+  "why": "An ORM hides SQL, not its consequences. N+1 queries and unsafe raw SQL are classic mistakes in generated code, and only fundamentals let you see them.",
   "cards": [
     {
       "id": "what-is-orm",

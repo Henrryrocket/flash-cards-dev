@@ -4,6 +4,7 @@
   "order": 13,
   "title": "Backend architectures",
   "summary": "How to organize code so the domain outlives the frameworks.",
+  "why": "Generated code follows the shape you give it. Choosing boundaries and dependencies is a human decision, and the one that costs most to change later.",
   "cards": [
     {
       "id": "layered-architecture",

@@ -1,9 +1,10 @@
 {
   "key": "typescript",
   "track": "backend",
-  "order": 10,
+  "order": 3,
   "title": "TypeScript",
   "summary": "El sistema de tipos: qué garantiza y dónde termina su protección.",
+  "why": "El código generado compila y aun así miente: los tipos desaparecen en ejecución. Entender qué garantiza el compilador, y qué no, es cómo atrapas los errores que la IA deja.",
   "cards": [
     {
       "id": "any-vs-unknown",

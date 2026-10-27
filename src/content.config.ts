@@ -26,6 +26,7 @@ const topics = defineCollection({
     order: z.number().int(),
     title: z.string().min(1),
     summary: z.string().min(1),
+    why: z.string().min(1),
     diagram: z.string().optional(),
     cards: z.array(card).min(1),
     resources: z.array(resource),

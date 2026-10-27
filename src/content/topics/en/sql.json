@@ -1,9 +1,10 @@
 {
   "key": "sql",
   "track": "backend",
-  "order": 4,
+  "order": 5,
   "title": "SQL",
   "summary": "Queries, indexes and transactions: what every interview asks.",
+  "why": "ORMs and AI can write queries you never read. Knowing joins, indexes and isolation levels is how you notice the one that scans a million rows or loses an update.",
   "cards": [
     {
       "id": "inner-vs-left-join",

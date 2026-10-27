@@ -1,9 +1,10 @@
 {
   "key": "jwt",
   "track": "backend",
-  "order": 3,
+  "order": 9,
   "title": "JWT and authentication",
   "summary": "Signed tokens: what they guarantee, what they do not, and how to use them safely.",
+  "why": "Auth code from an AI often looks right and is quietly broken: trusting the algorithm the token declares, storing it where XSS can read it. Knowing the model is the only defense.",
   "cards": [
     {
       "id": "jwt-structure",

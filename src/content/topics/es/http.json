@@ -1,9 +1,10 @@
 {
   "key": "http",
   "track": "backend",
-  "order": 1,
+  "order": 2,
   "title": "HTTP",
   "summary": "El protocolo sobre el que se construye casi todo el backend web.",
+  "why": "Toda API que genera una IA habla HTTP. Si no distingues un reintento idempotente de un cobro duplicado, no puedes saber si el código generado es seguro.",
   "cards": [
     {
       "id": "idempotent-methods",

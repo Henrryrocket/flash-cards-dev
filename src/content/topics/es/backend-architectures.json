@@ -4,6 +4,7 @@
   "order": 13,
   "title": "Arquitecturas backend",
   "summary": "Cómo organizar el código para que el dominio sobreviva a los frameworks.",
+  "why": "El código generado sigue la forma que tú le das. Elegir límites y dependencias es una decisión humana, y la que más cuesta cambiar después.",
   "cards": [
     {
       "id": "layered-architecture",

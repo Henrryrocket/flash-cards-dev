@@ -1,9 +1,10 @@
 {
   "key": "http",
   "track": "backend",
-  "order": 1,
+  "order": 2,
   "title": "HTTP",
   "summary": "The protocol almost all web backends are built on.",
+  "why": "Every API an AI generates speaks HTTP. If you cannot tell an idempotent retry from a duplicate charge, you cannot tell whether the generated code is safe.",
   "cards": [
     {
       "id": "idempotent-methods",

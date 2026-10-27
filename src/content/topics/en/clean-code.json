@@ -1,9 +1,10 @@
 {
   "key": "clean-code",
   "track": "backend",
-  "order": 14,
+  "order": 12,
   "title": "Clean code",
   "summary": "Code other people can read, change and trust.",
+  "why": "AI produces code faster than anyone can read it. Readability, naming and sensible abstractions keep that speed from turning into unmaintainable software.",
   "cards": [
     {
       "id": "meaningful-names",

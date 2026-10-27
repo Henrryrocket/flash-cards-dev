@@ -1,9 +1,10 @@
 {
   "key": "nodejs",
   "track": "backend",
-  "order": 6,
+  "order": 4,
   "title": "Node.js",
   "summary": "The event loop, concurrency and how not to block the process.",
+  "why": "An LLM will happily put a CPU-heavy loop inside a request handler. Knowing how the event loop works is how you spot the line that freezes your whole server.",
   "cards": [
     {
       "id": "event-loop",

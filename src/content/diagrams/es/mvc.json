@@ -1,0 +1,92 @@
+{
+  "key": "mvc",
+  "title": "Flujo de una petición en MVC",
+  "nodes": [
+    {
+      "id": "client",
+      "label": "Cliente",
+      "x": 80,
+      "y": 70
+    },
+    {
+      "id": "router",
+      "label": "Router",
+      "x": 290,
+      "y": 70
+    },
+    {
+      "id": "controller",
+      "label": "Controller",
+      "x": 500,
+      "y": 70
+    },
+    {
+      "id": "view",
+      "label": "Vista",
+      "x": 290,
+      "y": 250
+    },
+    {
+      "id": "model",
+      "label": "Modelo",
+      "x": 500,
+      "y": 250
+    },
+    {
+      "id": "db",
+      "label": "Base de datos",
+      "x": 710,
+      "y": 250
+    }
+  ],
+  "steps": [
+    {
+      "from": "client",
+      "to": "router",
+      "label": "GET /users/42",
+      "description": "El cliente envía una petición HTTP. Todavía no hay lógica: solo una URL y un método."
+    },
+    {
+      "from": "router",
+      "to": "controller",
+      "label": "users#show",
+      "description": "El router busca la ruta que coincide y delega en el controller correspondiente."
+    },
+    {
+      "from": "controller",
+      "to": "model",
+      "label": "findById(42)",
+      "description": "El controller no sabe de SQL: le pide el dato al modelo, que encapsula las reglas de negocio."
+    },
+    {
+      "from": "model",
+      "to": "db",
+      "label": "SELECT ... WHERE id = 42",
+      "description": "El modelo traduce la petición a una consulta a la base de datos."
+    },
+    {
+      "from": "db",
+      "to": "model",
+      "label": "fila",
+      "description": "La base de datos devuelve los datos crudos."
+    },
+    {
+      "from": "model",
+      "to": "controller",
+      "label": "User",
+      "description": "El modelo entrega un objeto de dominio ya validado."
+    },
+    {
+      "from": "controller",
+      "to": "view",
+      "label": "render(user)",
+      "description": "El controller elige la vista y le pasa los datos. No arma el HTML él mismo."
+    },
+    {
+      "from": "view",
+      "to": "client",
+      "label": "200 OK + HTML/JSON",
+      "description": "La vista produce la representación y la respuesta vuelve al cliente."
+    }
+  ]
+}

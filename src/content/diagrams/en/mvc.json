@@ -1,0 +1,92 @@
+{
+  "key": "mvc",
+  "title": "Request flow in MVC",
+  "nodes": [
+    {
+      "id": "client",
+      "label": "Client",
+      "x": 80,
+      "y": 70
+    },
+    {
+      "id": "router",
+      "label": "Router",
+      "x": 290,
+      "y": 70
+    },
+    {
+      "id": "controller",
+      "label": "Controller",
+      "x": 500,
+      "y": 70
+    },
+    {
+      "id": "view",
+      "label": "View",
+      "x": 290,
+      "y": 250
+    },
+    {
+      "id": "model",
+      "label": "Model",
+      "x": 500,
+      "y": 250
+    },
+    {
+      "id": "db",
+      "label": "Database",
+      "x": 710,
+      "y": 250
+    }
+  ],
+  "steps": [
+    {
+      "from": "client",
+      "to": "router",
+      "label": "GET /users/42",
+      "description": "The client sends an HTTP request. No logic yet: just a URL and a method."
+    },
+    {
+      "from": "router",
+      "to": "controller",
+      "label": "users#show",
+      "description": "The router finds the matching route and delegates to the right controller."
+    },
+    {
+      "from": "controller",
+      "to": "model",
+      "label": "findById(42)",
+      "description": "The controller knows nothing about SQL: it asks the model, which encapsulates business rules."
+    },
+    {
+      "from": "model",
+      "to": "db",
+      "label": "SELECT ... WHERE id = 42",
+      "description": "The model turns the request into a database query."
+    },
+    {
+      "from": "db",
+      "to": "model",
+      "label": "row",
+      "description": "The database returns raw data."
+    },
+    {
+      "from": "model",
+      "to": "controller",
+      "label": "User",
+      "description": "The model hands back an already-validated domain object."
+    },
+    {
+      "from": "controller",
+      "to": "view",
+      "label": "render(user)",
+      "description": "The controller picks the view and passes the data. It does not build the HTML itself."
+    },
+    {
+      "from": "view",
+      "to": "client",
+      "label": "200 OK + HTML/JSON",
+      "description": "The view produces the representation and the response goes back to the client."
+    }
+  ]
+}

@@ -19,7 +19,7 @@ S11. Decision (user): content bilingual ES/EN from day 1, language selector.
 - T1 (S2,S4,S9,S11) Scaffold Astro + React islands + Tailwind, i18n routing ES/EN, content schema — inline — done (build OK: 5 pages, ES/EN, no warnings; not committed)
 - T2 (S1,S3) Flash-card component (flip, level filter, progress in localStorage) — inline — done (8 vitest tests green, astro check clean, flip/mark/persist verified in browser; not committed)
 - T3 (S10) Security: CSP, headers (_headers), no user-input sinks, dependency audit — inline — done (CSP via Astro security.csp + public/_headers; 15 tests, check clean, pnpm audit clean, hydration verified under CSP; not committed)
-- T4 (S6) Diagram engine (step-player over SVG) + MVC flow diagram — inline — pending
+- T4 (S6) Diagram engine (step-player over SVG) + MVC flow diagram — inline — done (22 tests, check clean, 7 pages; step-player verified in browser under CSP: next/play/reset; not committed)
 - T5 (S5,S7,S8) Content pass 1: HTTP, JWT, SQL/Postgres, Node, System design (research-backed) — pending
 - T6 (S9) Deploy config Cloudflare Pages + CI — pending
 

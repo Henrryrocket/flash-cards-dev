@@ -1,0 +1,38 @@
+{
+  "key": "mvc",
+  "track": "backend",
+  "order": 2,
+  "title": "MVC",
+  "summary": "Separating presentation, coordination and domain.",
+  "diagram": "mvc",
+  "cards": [
+    {
+      "id": "mvc-what",
+      "level": "beginner",
+      "question": "What is MVC and what is each layer responsible for?",
+      "answer": "Model: data and business rules. View: the representation the user sees. Controller: receives the request, coordinates the model and picks the view."
+    },
+    {
+      "id": "fat-controller",
+      "level": "intermediate",
+      "question": "What is a 'fat controller' and how do you avoid it?",
+      "answer": "A controller holding business logic, validation and data access. Avoid it by moving that logic into models or services and letting the controller only orchestrate."
+    },
+    {
+      "id": "mvc-vs-clean",
+      "level": "advanced",
+      "question": "How does MVC differ from clean/hexagonal architecture?",
+      "answer": "MVC organizes the presentation layer; it says nothing about isolating the domain from infrastructure. In hexagonal the domain depends on no framework or database: adapters depend on it (dependency inversion)."
+    }
+  ],
+  "resources": [
+    {
+      "title": "MDN: MVC",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/MVC"
+    },
+    {
+      "title": "Martin Fowler: GUI Architectures",
+      "url": "https://martinfowler.com/eaaDev/uiArchs.html"
+    }
+  ]
+}

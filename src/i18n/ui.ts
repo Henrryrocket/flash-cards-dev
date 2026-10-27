@@ -11,6 +11,7 @@ export const ui = {
     resources: 'Para profundizar',
     level: { beginner: 'Principiante', intermediate: 'Intermedio', advanced: 'Avanzado' },
     switchTo: 'English',
+    diagram: { prev: 'Anterior', next: 'Siguiente', play: 'Reproducir', pause: 'Pausar', reset: 'Reiniciar', step: 'Paso', of: 'de', aria: 'Diagrama interactivo' },
     deck: { all: 'Todos', show: 'Mostrar respuesta', hide: 'Ocultar respuesta', known: 'Lo sé', review: 'Repasar', prev: 'Anterior', next: 'Siguiente', of: 'de', mastered: 'dominadas', empty: 'No hay tarjetas para este nivel.' },
   },
   en: {
@@ -22,6 +23,7 @@ export const ui = {
     resources: 'Go deeper',
     level: { beginner: 'Beginner', intermediate: 'Intermediate', advanced: 'Advanced' },
     switchTo: 'Español',
+    diagram: { prev: 'Previous', next: 'Next', play: 'Play', pause: 'Pause', reset: 'Reset', step: 'Step', of: 'of', aria: 'Interactive diagram' },
     deck: { all: 'All', show: 'Show answer', hide: 'Hide answer', known: 'I know it', review: 'Review again', prev: 'Previous', next: 'Next', of: 'of', mastered: 'mastered', empty: 'No cards for this level.' },
   },
 } as const satisfies Record<Locale, unknown>;

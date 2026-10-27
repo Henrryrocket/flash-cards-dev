@@ -1,7 +1,8 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import FlashcardDeck from '../../components/FlashcardDeck';
+import FlowDiagram from '../../components/FlowDiagram';
 import { locales, ui, type Locale } from '../../i18n/ui';
 
 export async function getStaticPaths() {
@@ -17,10 +18,18 @@ const lang = Astro.params.lang as Locale;
 const t = ui[lang];
 const other = lang === 'es' ? 'en' : 'es';
 const { title, summary, cards, resources } = entry.data;
+const diagramEntry = entry.data.diagram
+  ? await getEntry('diagrams', `${lang}/${entry.data.diagram}`)
+  : undefined;
 ---
 <Base lang={lang} title={`${title} · ${t.siteTitle}`} altHref={`/${other}/${entry.data.key}/`}>
   <h1 class="mt-8 text-3xl font-extrabold tracking-tight">{title}</h1>
   <p class="mt-2 text-zinc-400">{summary}</p>
+  {diagramEntry && (
+    <div class="mt-8">
+      <FlowDiagram client:load diagram={diagramEntry.data} labels={t.diagram} />
+    </div>
+  )}
   <div class="mt-8">
     <FlashcardDeck client:load topic={entry.data.key} cards={cards} labels={{ ...t.deck, level: t.level }} />
   </div>

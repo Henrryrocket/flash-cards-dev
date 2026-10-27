@@ -1,6 +1,7 @@
 import { defineCollection } from 'astro:content';
 import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
+import { validateDiagram } from './lib/diagram';
 
 export const levels = ['beginner', 'intermediate', 'advanced'] as const;
 export const tracks = ['backend', 'frontend'] as const;
@@ -31,4 +32,18 @@ const topics = defineCollection({
   }),
 });
 
-export const collections = { topics };
+const diagrams = defineCollection({
+  loader: glob({ pattern: '**/*.json', base: './src/content/diagrams' }),
+  schema: z
+    .object({
+      key: z.string().regex(/^[a-z0-9-]+$/),
+      title: z.string().min(1),
+      nodes: z.array(z.object({ id: z.string(), label: z.string(), x: z.number(), y: z.number() })).min(2),
+      steps: z.array(z.object({ from: z.string(), to: z.string(), label: z.string(), description: z.string() })).min(1),
+    })
+    .superRefine((d, ctx) => {
+      for (const message of validateDiagram(d)) ctx.addIssue({ code: 'custom', message });
+    }),
+});
+
+export const collections = { topics, diagrams };

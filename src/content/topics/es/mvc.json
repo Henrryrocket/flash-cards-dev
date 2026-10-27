@@ -1,0 +1,38 @@
+{
+  "key": "mvc",
+  "track": "backend",
+  "order": 2,
+  "title": "MVC",
+  "summary": "Separar presentación, coordinación y dominio.",
+  "diagram": "mvc",
+  "cards": [
+    {
+      "id": "mvc-what",
+      "level": "beginner",
+      "question": "¿Qué es MVC y qué responsabilidad tiene cada capa?",
+      "answer": "Model: datos y reglas de negocio. View: representación que ve el usuario. Controller: recibe la petición, coordina al modelo y elige la vista."
+    },
+    {
+      "id": "fat-controller",
+      "level": "intermediate",
+      "question": "¿Qué es un 'fat controller' y cómo se evita?",
+      "answer": "Un controller con lógica de negocio, validaciones y acceso a datos. Se evita moviendo esa lógica a modelos o servicios y dejando al controller solo orquestar."
+    },
+    {
+      "id": "mvc-vs-clean",
+      "level": "advanced",
+      "question": "¿En qué se diferencia MVC de una arquitectura limpia/hexagonal?",
+      "answer": "MVC organiza la capa de presentación; no dice cómo aislar el dominio de la infraestructura. En hexagonal el dominio no depende de frameworks ni de la base de datos: los adaptadores dependen de él (inversión de dependencias)."
+    }
+  ],
+  "resources": [
+    {
+      "title": "MDN: MVC",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/MVC"
+    },
+    {
+      "title": "Martin Fowler: GUI Architectures",
+      "url": "https://martinfowler.com/eaaDev/uiArchs.html"
+    }
+  ]
+}

@@ -8,8 +8,8 @@ export default defineConfig({
   output: 'static',
   integrations: [react()],
   i18n: {
-    locales: ['es', 'en'],
-    defaultLocale: 'es',
+    locales: ['en', 'es'],
+    defaultLocale: 'en',
     routing: { prefixDefaultLocale: true, redirectToDefaultLocale: false },
   },
   security: {

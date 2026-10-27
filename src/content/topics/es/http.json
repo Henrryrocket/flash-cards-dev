@@ -1,0 +1,16 @@
+{
+  "key": "http",
+  "track": "backend",
+  "order": 1,
+  "title": "HTTP",
+  "summary": "El protocolo sobre el que se construye casi todo el backend web.",
+  "cards": [
+    { "id": "idempotent-methods", "level": "beginner", "question": "¿Qué significa que un método HTTP sea idempotente?", "answer": "Repetir la misma petición produce el mismo estado final en el servidor. GET, PUT y DELETE son idempotentes; POST no." },
+    { "id": "put-vs-patch", "level": "intermediate", "question": "¿Diferencia entre PUT y PATCH?", "answer": "PUT reemplaza el recurso completo; PATCH aplica una modificación parcial. PUT es idempotente por definición, PATCH depende de su implementación." },
+    { "id": "http2-vs-http1", "level": "advanced", "question": "¿Qué problema resuelve HTTP/2 frente a HTTP/1.1?", "answer": "Multiplexación de streams sobre una sola conexión TCP, eliminando el head-of-line blocking a nivel HTTP y comprimiendo cabeceras con HPACK. El bloqueo a nivel TCP persiste; HTTP/3 (QUIC) lo resuelve." }
+  ],
+  "resources": [
+    { "title": "MDN: Overview of HTTP", "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview" },
+    { "title": "RFC 9110: HTTP Semantics", "url": "https://www.rfc-editor.org/rfc/rfc9110" }
+  ]
+}

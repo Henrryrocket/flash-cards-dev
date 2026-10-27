@@ -1,0 +1,25 @@
+---
+import '../styles/global.css';
+import { ui, type Locale } from '../i18n/ui';
+
+interface Props { lang: Locale; title: string; altHref: string }
+const { lang, title, altHref } = Astro.props;
+const t = ui[lang];
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen bg-zinc-950 text-zinc-100 antialiased">
+    <header class="mx-auto flex max-w-4xl items-center justify-between px-4 py-5">
+      <a href={`/${lang}/`} class="font-bold tracking-tight text-emerald-400">{t.siteTitle}</a>
+      <a href={altHref} hreflang={lang === 'es' ? 'en' : 'es'} class="text-sm text-zinc-400 hover:text-zinc-100">{t.switchTo}</a>
+    </header>
+    <main class="mx-auto max-w-4xl px-4 pb-16"><slot /></main>
+  </body>
+</html>

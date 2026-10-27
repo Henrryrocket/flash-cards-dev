@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { locales, ui, type Locale } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Locale;
+const t = ui[lang];
+const topics = (await getCollection('topics', (e) => e.id.startsWith(`${lang}/`)))
+  .sort((a, b) => a.data.order - b.data.order);
+const other = lang === 'es' ? 'en' : 'es';
+---
+<Base lang={lang} title={t.siteTitle} altHref={`/${other}/`}>
+  <h1 class="mt-8 text-4xl font-extrabold tracking-tight">{t.siteTitle}</h1>
+  <p class="mt-2 text-zinc-400">{t.tagline}</p>
+  <h2 class="mt-10 text-sm font-semibold uppercase tracking-wider text-zinc-500">{t.backend} · {t.topics}</h2>
+  <ul class="mt-4 grid gap-3 sm:grid-cols-2">
+    {topics.map((topic) => (
+      <li>
+        <a href={`/${lang}/${topic.data.key}/`} class="block rounded-xl border border-zinc-800 bg-zinc-900 p-4 transition hover:border-emerald-400">
+          <h3 class="font-semibold">{topic.data.title}</h3>
+          <p class="mt-1 text-sm text-zinc-400">{topic.data.summary}</p>
+          <p class="mt-3 text-xs text-emerald-400">{topic.data.cards.length} {t.cards}</p>
+        </a>
+      </li>
+    ))}
+  </ul>
+</Base>

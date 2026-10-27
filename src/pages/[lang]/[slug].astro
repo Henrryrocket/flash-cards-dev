@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import FlashcardDeck from '../../components/FlashcardDeck';
+import { locales, ui, type Locale } from '../../i18n/ui';
+
+export async function getStaticPaths() {
+  const all = await getCollection('topics');
+  return all.map((entry) => ({
+    params: { lang: entry.id.split('/')[0], slug: entry.data.key },
+    props: { entry },
+  })).filter((p) => (locales as readonly string[]).includes(p.params.lang!));
+}
+
+const { entry } = Astro.props;
+const lang = Astro.params.lang as Locale;
+const t = ui[lang];
+const other = lang === 'es' ? 'en' : 'es';
+const { title, summary, cards, resources } = entry.data;
+---
+<Base lang={lang} title={`${title} · ${t.siteTitle}`} altHref={`/${other}/${entry.data.key}/`}>
+  <h1 class="mt-8 text-3xl font-extrabold tracking-tight">{title}</h1>
+  <p class="mt-2 text-zinc-400">{summary}</p>
+  <div class="mt-8">
+    <FlashcardDeck client:load topic={entry.data.key} cards={cards} labels={{ ...t.deck, level: t.level }} />
+  </div>
+  <h2 class="mt-10 text-sm font-semibold uppercase tracking-wider text-zinc-500">{t.resources}</h2>
+  <ul class="mt-3 space-y-1">
+    {resources.map((r) => (
+      <li><a href={r.url} rel="noopener noreferrer" target="_blank" class="text-emerald-400 underline">{r.title}</a></li>
+    ))}
+  </ul>
+</Base>
